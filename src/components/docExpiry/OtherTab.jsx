@@ -3,6 +3,8 @@ import { CalendarWidget } from "./CalendarWidget";
 const inter = { fontFamily: "Inter, sans-serif" };
 
 export const OtherTab = ({ actionItems }) => {
+
+
     return (
         <div className="px-4 sm:px-6 pb-8 flex flex-col md:flex-row gap-5 items-start ">
             {/* Left: Action Items Table */}
