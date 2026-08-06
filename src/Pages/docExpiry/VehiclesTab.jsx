@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { PaginationFooter } from "./PaginationFooter";
+import { FilterSelect } from "./FilterSelect";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 
@@ -52,34 +53,32 @@ export const VehiclesTab = ({ vehicles }) => {
                         />
                     </div>
 
-                    <select
+                    <FilterSelect
                         value={vehicleTypeFilter}
-                        onChange={(e) => {
-                            setVehicleTypeFilter(e.target.value);
+                        onChange={(val) => {
+                            setVehicleTypeFilter(val);
                             setVehiclePage(1);
                         }}
-                        style={{ ...inter, fontSize: "12px" }}
-                        className="px-3 py-1.5 rounded-lg bg-[#E2E1EC] text-slate-700 font-medium border-0 focus:ring-2 focus:ring-violet-200 cursor-pointer"
-                    >
-                        <option value="All Vehicle Types">All Vehicle Types</option>
-                        <option value="Sedan">Sedan</option>
-                        <option value="SUV">SUV</option>
-                        <option value="Truck">Truck</option>
-                    </select>
+                        options={[
+                            "All Vehicle Types",
+                            "Sedan",
+                            "SUV",
+                            "Truck",
+                        ]}
+                    />
 
-                    <select
+                    <FilterSelect
                         value={vehicleStatusFilter}
-                        onChange={(e) => {
-                            setVehicleStatusFilter(e.target.value);
+                        onChange={(val) => {
+                            setVehicleStatusFilter(val);
                             setVehiclePage(1);
                         }}
-                        style={{ ...inter, fontSize: "12px" }}
-                        className="px-3 py-1.5 rounded-lg bg-[#E2E1EC] text-slate-700 font-medium border-0 focus:ring-2 focus:ring-violet-200 cursor-pointer"
-                    >
-                        <option value="All Expiry Status">All Expiry Status</option>
-                        <option value="Expiring Soon">Expiring Soon</option>
-                        <option value="Valid">Valid</option>
-                    </select>
+                        options={[
+                            "All Expiry Status",
+                            "Expiring Soon",
+                            "Valid",
+                        ]}
+                    />
 
                     <div className="flex-1" />
 

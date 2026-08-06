@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { Avatar, EmployeeDetailPanel } from "./EmployeeDetailPanel";
 import { PaginationFooter } from "./PaginationFooter";
+import { FilterSelect } from "./FilterSelect";
+import { departmentOptions, expiryTypeOptions } from "../../data/docExpiryData";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 
@@ -52,7 +54,7 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                 }
             >
                 {/* Filters Row */}
-                <div className="flex flex-wrap items-center gap-2 px-3.5 py-2.5 border-b border-gray-100 shrink-0">
+                <div className="flex flex-wrap items-center gap-2 px-3.5 py-2.5 border-b border-gray-100 shrink-0 relative z-20">
                     <div className="relative">
                         <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" />
                         <input
@@ -68,55 +70,44 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                         />
                     </div>
 
-                    <select
-                        value={deptFilter}
-                        onChange={(e) => {
-                            setDeptFilter(e.target.value);
-                            setEmpPage(1);
-                        }}
-                        style={{ ...inter, fontSize: "12px" }}
-                        className="px-2.5 py-1.5 rounded-lg bg-[#E2E1EC] text-slate-700 font-medium border-0 focus:ring-2 focus:ring-violet-200 cursor-pointer"
-                    >
-                        <option value="All Departments">All Departments</option>
-                        <option value="Sales">Sales</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Development">Development</option>
-                        <option value="Design">Design</option>
-                        <option value="HR">HR</option>
-                        <option value="Finance">Finance</option>
-                        <option value="Customer Support">Customer Support</option>
-                        <option value="Operations">Operations</option>
-                    </select>
+                    {/* Filter dropdowns + Sliders icon button (next to pills on mobile, far right on desktop) */}
+                    <div className="flex items-center gap-2 shrink-0 sm:flex-1 relative z-30">
+                        <FilterSelect
+                            value={deptFilter}
+                            onChange={(val) => {
+                                setDeptFilter(val);
+                                setEmpPage(1);
+                            }}
+                            options={departmentOptions}
+                        />
 
-                    <select
-                        value={expiryTypeFilter}
-                        onChange={(e) => {
-                            setExpiryTypeFilter(e.target.value);
-                            setEmpPage(1);
-                        }}
-                        style={{ ...inter, fontSize: "12px" }}
-                        className="px-2.5 py-1.5 rounded-lg bg-[#E2E1EC] text-slate-700 font-medium border-0 focus:ring-2 focus:ring-violet-200 cursor-pointer"
-                    >
-                        <option value="All Expiry Type">All Expiry Type</option>
-                        <option value="Visa">Visa</option>
-                        <option value="Health Insurance">Health Insurance</option>
-                        <option value="Passport">Passport</option>
-                    </select>
+                        <FilterSelect
+                            value={expiryTypeFilter}
+                            onChange={(val) => {
+                                setExpiryTypeFilter(val);
+                                setEmpPage(1);
+                            }}
+                            align="right"
+                            options={expiryTypeOptions}
+                        />
 
-                    <div className="flex-1" />
+                        {/* Desktop spacer to push filter button to the far right end */}
+                        <div className="hidden sm:block flex-1" />
 
-                    <button
-                        onClick={() => {
-                            setSearchTerm("");
-                            setDeptFilter("All Departments");
-                            setExpiryTypeFilter("All Expiry Type");
-                            setEmpPage(1);
-                        }}
-                        title="Reset Filters"
-                        className="p-1.5 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-violet-600 transition cursor-pointer"
-                    >
-                        <SlidersHorizontal size={14} />
-                    </button>
+                        {/* Sliders Filter Icon Button */}
+                        <button
+                            onClick={() => {
+                                setSearchTerm("");
+                                setDeptFilter("All Departments");
+                                setExpiryTypeFilter("All Expiry Type");
+                                setEmpPage(1);
+                            }}
+                            title="Reset Filters"
+                            className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white border border-gray-200/90 shadow-2xs flex items-center justify-center text-slate-500 hover:text-violet-600 hover:bg-slate-50 transition cursor-pointer shrink-0"
+                        >
+                            <SlidersHorizontal size={14} />
+                        </button>
+                    </div>
                 </div>
 
                 {/* Table */}
@@ -151,11 +142,10 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                                         <tr
                                             key={emp.id}
                                             onClick={() => setSelectedEmployee(isSelected ? null : emp)}
-                                            className={`border-b border-gray-50 transition-colors cursor-pointer ${
-                                                isSelected
-                                                    ? "bg-[#ECE6FF]"
-                                                    : "hover:bg-violet-50/70"
-                                            }`}
+                                            className={`border-b border-gray-50 transition-colors cursor-pointer ${isSelected
+                                                ? "bg-[#ECE6FF]"
+                                                : "hover:bg-violet-50/70"
+                                                }`}
                                         >
                                             <td className="px-3.5 py-2">
                                                 <div className="flex items-center gap-2">

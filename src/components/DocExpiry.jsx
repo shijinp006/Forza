@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { stats, employees, vehicles, companyDocs, actionItems } from "../data/mockData";
-import { TopBarHeader } from "./docExpiry/TopBarHeader";
-import { StatCard } from "./docExpiry/StatCard";
-import { EmployeesTab } from "./docExpiry/EmployeesTab";
-import { VehiclesTab } from "./docExpiry/VehiclesTab";
-import { CompanyDocsTab } from "./docExpiry/CompanyDocsTab";
-import { OtherTab } from "./docExpiry/OtherTab";
+import { TopBarHeader } from "../Pages/docExpiry/TopBarHeader";
+import { StatCard } from "../Pages/docExpiry/StatCard";
+import { EmployeesTab } from "../Pages/docExpiry/EmployeesTab";
+import { VehiclesTab } from "../Pages/docExpiry/VehiclesTab";
+import { CompanyDocsTab } from "../Pages/docExpiry/CompanyDocsTab";
+import { OtherTab } from "../Pages/docExpiry/OtherTab";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 

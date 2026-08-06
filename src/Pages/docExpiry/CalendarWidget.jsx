@@ -86,13 +86,12 @@ export const CalendarWidget = () => {
                                 }}
                                 disabled={!item.isCurr}
                                 style={{ fontSize: "12px", fontWeight: isSelected ? 600 : 400 }}
-                                className={`w-7 h-7 flex items-center justify-center rounded-lg transition cursor-pointer ${
-                                    isSelected
+                                className={`w-7 h-7 flex items-center justify-center rounded-lg transition cursor-pointer ${isSelected
                                         ? "bg-violet-600 text-white font-semibold shadow-xs ring-2 ring-violet-200"
                                         : item.isCurr
-                                        ? "text-slate-700 hover:bg-violet-50 hover:text-violet-600"
-                                        : "text-gray-300 cursor-not-allowed"
-                                }`}
+                                            ? "text-slate-700 hover:bg-violet-50 hover:text-violet-600"
+                                            : "text-gray-300 cursor-not-allowed"
+                                    }`}
                             >
                                 {item.day}
                             </button>

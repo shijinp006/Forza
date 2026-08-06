@@ -1,39 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Bell, ChevronRight, ChevronLeft, Menu } from "lucide-react";
+import { mainMenus, bottomMenus } from "../data/sidebarData";
 
-// Custom SVG icons from assets
-import DashboardIcon from "../assets/Dashboard.svg?react";
-import SalesIcon from "../assets/Sales.svg?react";
-import PurchaseIcon from "../assets/Purchase.svg?react";
-import InventoryIcon from "../assets/Inventory.svg?react";
-import CounterIcon from "../assets/CounterReport.svg?react";
-import TaxIcon from "../assets/TaxReport.svg?react";
-import AccountIcon from "../assets/AccountReport.svg?react";
-import DocIcon from "../assets/Doc.svg?react";
-import SettingIcon from "../assets/Setting.svg?react";
-import HelpIcon from "../assets/Help.svg?react";
+// Custom SVG logos from assets
 import ForzaLogo from "../assets/Ficon.svg?react";
 import ForzaText from "../assets/ForzaTexticon.svg?react";
-
-
-/* ── Menu data ────────────────────────── */
-const mainMenus = [
-  { title: "Dashboard", Icon: DashboardIcon, path: "/" },
-  { title: "Sales Analysis", Icon: SalesIcon, path: "/sales" },
-  { title: "Purchase Analysis", Icon: PurchaseIcon, path: "/purchase" },
-  { title: "Inventory", Icon: InventoryIcon, path: "/inventory" },
-  { title: "Counter Report", Icon: CounterIcon, path: "/counter" },
-  { title: "Tax Report", Icon: TaxIcon, path: "/tax" },
-  { title: "Account report", Icon: AccountIcon, path: "/account" },
-  { title: "Doc Expiry", Icon: DocIcon, path: "/doc-expiry" },
-];
-
-const bottomMenus = [
-  { title: "Notifications", Icon: Bell },  // lucide — no bell asset available
-  { title: "Settings", Icon: SettingIcon },
-  { title: "Help", Icon: HelpIcon },
-];
 
 /* ── Active gradient ──────────────────── */
 const activeGradient = {
@@ -91,21 +63,19 @@ function MenuItem({ item, isActive, onClick, collapsed }) {
       onClick={() => onClick(item)}
       title={collapsed ? title : undefined}
       className={[
-        "relative w-full h-11 rounded-xl flex items-center transition-all duration-200 cursor-pointer ",
-        collapsed ? "justify-center px-2 " : "gap-3 px-3",
+        "relative w-full h-11 rounded-xl flex items-center transition-all duration-200 cursor-pointer gap-3 px-3",
+        collapsed ? "lg:justify-center lg:px-2" : "",
         isActive ? "shadow-sm" : "hover:bg-violet-50",
       ].join(" ")}
       style={isActive ? activeGradient : {}}
     >
       <SvgIcon Icon={Icon} isActive={isActive} isLucide={isLucide} />
-      {!collapsed && (
-        <span
-          style={isActive ? { ...poppins500, color: "#fff" } : poppins500}
-          className="align-middle whitespace-nowrap "
-        >
-          {title}
-        </span>
-      )}
+      <span
+        style={isActive ? { ...poppins500, color: "#fff" } : poppins500}
+        className={`align-middle whitespace-nowrap ${collapsed ? "hidden lg:hidden max-lg:inline-block" : "inline-block"}`}
+      >
+        {title}
+      </span>
     </button>
   );
 }
@@ -117,9 +87,14 @@ export function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
+  useEffect(() => {
+    const handleOpen = () => setMobileOpen(true);
+    window.addEventListener("open-sidebar", handleOpen);
+    return () => window.removeEventListener("open-sidebar", handleOpen);
+  }, []);
+
   const handleMenuClick = (item) => {
     if (item.path) navigate(item.path);
-    // Close mobile drawer on navigation
     if (window.innerWidth < 1024) setMobileOpen(false);
   };
 
@@ -127,18 +102,9 @@ export function Sidebar() {
     if (item.path === "/") return location.pathname === "/";
     return location.pathname.startsWith(item.path);
   };
+
   return (
     <>
-      {/* Mobile open button */}
-      {!mobileOpen && (
-        <button
-          onClick={() => setMobileOpen(true)}
-          aria-label="Open menu"
-          className="lg:hidden fixed top-4 left-4 z-50 bg-violet-600 text-white p-2 rounded-xl shadow-lg"
-        >
-          <Menu size={20} />
-        </button>
-      )}
 
       {/* Mobile backdrop */}
       <div
@@ -152,27 +118,24 @@ export function Sidebar() {
         style={{ borderRadius: "16px" }}
         className={[
           "fixed lg:relative top-0 left-0 h-screen",
-          collapsed ? "w-[68px]" : "w-[280px] max-w-[280px]",
+          collapsed ? "lg:w-[68px] w-[280px] max-w-[280px]" : "w-[280px] max-w-[280px]",
           "bg-white flex flex-col overflow-hidden",
           "transition-all duration-300 ease-in-out z-[60]",
           "shadow-[0_2px_24px_rgba(111,87,222,0.10)]",
           "border border-gray-100",
-          mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
+          mobileOpen ? "translate-x-0 flex" : "-translate-x-full hidden lg:flex lg:translate-x-0",
         ].join(" ")}
       >
         {/* ─── LOGO ROW ─── */}
-        <div className={`flex items-center py-5  ${collapsed ? "justify-center px-4" : "px-5 justify-between"}`}>
+        <div className={`flex items-center py-5 px-5 justify-between ${collapsed ? "lg:justify-center lg:px-4" : ""}`}>
           <div className="flex items-center gap-10">
             {/* Custom F logo from assets */}
             <span className="shrink-0 flex items-center" style={{ width: 36, height: 36 }}>
               <ForzaLogo width={36} height={36} style={{ display: "block" }} />
             </span>
-            {!collapsed && (
-              /* Custom FORZA text SVG */
-              <span className="flex items-center" style={{ height: 24 }}>
-                <ForzaText height={55} style={{ display: "block" }} />
-              </span>
-            )}
+            <span className={`flex items-center ${collapsed ? "hidden lg:hidden max-lg:inline-flex" : "inline-flex"}`} style={{ height: 24 }}>
+              <ForzaText height={55} style={{ display: "block" }} />
+            </span>
           </div>
 
           {/* Collapse / expand (desktop) */}
@@ -198,23 +161,19 @@ export function Sidebar() {
           )}
 
           {/* Close on mobile */}
-          {!collapsed && (
-            <button
-              onClick={() => setMobileOpen(false)}
-              aria-label="Close menu"
-              className="lg:hidden p-1 rounded-lg hover:bg-violet-50 text-slate-400 hover:text-violet-600 transition-colors "
-            >
-              <ChevronLeft size={18} />
-            </button>
-          )}
+          <button
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+            className="lg:hidden p-1 rounded-lg hover:bg-violet-50 text-slate-400 hover:text-violet-600 transition-colors"
+          >
+            <ChevronLeft size={18} />
+          </button>
         </div>
 
-        {/* Dashed separator */}
-        <div className="mx-4 border-t border-dashed border-violet-200" />
 
         {/* ─── MAIN NAV — scrollable ─── */}
         <div
-          className={`flex-1 min-h-0 overflow-y-auto mt-4 pb-2  ${collapsed ? "px-2" : "px-8"} `}
+          className={`flex-1 min-h-0 overflow-y-auto mt-4 pb-2 px-5 ${collapsed ? "lg:px-2" : ""}`}
           style={{ scrollbarWidth: "thin", scrollbarColor: "#c4b5fd transparent" }}
         >
           <nav className="flex flex-col gap-0.5  ">
@@ -233,7 +192,7 @@ export function Sidebar() {
         {/* ─── BOTTOM — always pinned ─── */}
         <div className="shrink-0">
           {/* Dashed separator */}
-          <div className="mx-4 border-t border-dashed border-violet-200 " />
+          <div className="mx-4 border-t border-gray-200 " />
 
           {/* Bottom nav */}
           <nav className={`flex flex-col gap-0.5 mt-3 ${collapsed ? "px-2" : "px-8"}`}>
@@ -249,7 +208,7 @@ export function Sidebar() {
           </nav>
 
           {/* Dashed separator */}
-          <div className="mx-4 mt-3 border-t border-dashed border-violet-200" />
+          <div className="mx-4 mt-3 border-t border-gray-200" />
 
           {/* ─── PROFILE ─── */}
           <div className={`py-4 ${collapsed ? "px-2" : "px-3"}`}>
