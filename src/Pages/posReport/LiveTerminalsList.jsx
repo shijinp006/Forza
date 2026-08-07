@@ -3,17 +3,27 @@ import BluecolorDIcon from "../../assets/BluecolorD.svg?react";
 
 const inter = { fontFamily: "Inter, sans-serif, Manrope" };
 
-/* Receipt Jagged Edge Component */
-function SerratedEdge({ position = "top" }) {
+/* Receipt Scalloped Edge Component (Smooth wavy top) */
+function ScallopedTopEdge({ color = "#F4F5F8", stroke = "#E2E8F0" }) {
     return (
-        <div className={`w-full overflow-hidden leading-none select-none h-2.5 ${position === "bottom" ? "rotate-180" : ""}`}>
+        <div className="w-full overflow-hidden leading-none select-none h-3 -mb-[1px]">
             <svg
-                className="w-full h-2.5 text-[#F4F6F8] block"
-                viewBox="0 0 400 12"
+                className="w-full h-3 block"
+                viewBox="0 0 300 12"
                 preserveAspectRatio="none"
-                fill="currentColor"
             >
-                <path d="M0,12 L10,0 L20,12 L30,0 L40,12 L50,0 L60,12 L70,0 L80,12 L90,0 L100,12 L110,0 L120,12 L130,0 L140,12 L150,0 L160,12 L170,0 L180,12 L190,0 L200,12 L210,0 L220,12 L230,0 L240,12 L250,0 L260,12 L270,0 L280,12 L290,0 L300,12 L310,0 L320,12 L330,0 L340,12 L350,0 L360,12 L370,0 L380,12 L390,0 L400,12 L400,12 L0,12 Z" />
+                {/* Fill */}
+                <path
+                    d="M 0,12 Q 5,2 10,12 Q 15,2 20,12 Q 25,2 30,12 Q 35,2 40,12 Q 45,2 50,12 Q 55,2 60,12 Q 65,2 70,12 Q 75,2 80,12 Q 85,2 90,12 Q 95,2 100,12 Q 105,2 110,12 Q 115,2 120,12 Q 125,2 130,12 Q 135,2 140,12 Q 145,2 150,12 Q 155,2 160,12 Q 165,2 170,12 Q 175,2 180,12 Q 185,2 190,12 Q 195,2 200,12 Q 205,2 210,12 Q 215,2 220,12 Q 225,2 230,12 Q 235,2 240,12 Q 245,2 250,12 Q 255,2 260,12 Q 265,2 270,12 Q 275,2 280,12 Q 285,2 290,12 Q 295,2 300,12 L 300,12 L 0,12 Z"
+                    fill={color}
+                />
+                {/* Top wavy line stroke */}
+                <path
+                    d="M 0,12 Q 5,2 10,12 Q 15,2 20,12 Q 25,2 30,12 Q 35,2 40,12 Q 45,2 50,12 Q 55,2 60,12 Q 65,2 70,12 Q 75,2 80,12 Q 85,2 90,12 Q 95,2 100,12 Q 105,2 110,12 Q 115,2 120,12 Q 125,2 130,12 Q 135,2 140,12 Q 145,2 150,12 Q 155,2 160,12 Q 165,2 170,12 Q 175,2 180,12 Q 185,2 190,12 Q 195,2 200,12 Q 205,2 210,12 Q 215,2 220,12 Q 225,2 230,12 Q 235,2 240,12 Q 245,2 250,12 Q 255,2 260,12 Q 265,2 270,12 Q 275,2 280,12 Q 285,2 290,12 Q 295,2 300,12"
+                    fill="none"
+                    stroke={stroke}
+                    strokeWidth="1"
+                />
             </svg>
         </div>
     );
@@ -26,8 +36,8 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
         <div
             style={{
                 width: "100%",
-                height: isAllCounters ? "820px" : "520px",
-                maxHeight: isAllCounters ? "820px" : "520px",
+                height: isAllCounters ? "855px" : "520px",
+                maxHeight: isAllCounters ? "855px" : "520px",
                 borderRadius: "12px",
                 border: "1px solid #E0E3E5",
                 backgroundColor: "#FFFFFF",
@@ -64,7 +74,7 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
                 }}
             >
                 {isAllCounters ? (
-                    /* ══ ALL COUNTERS VIEW (Counter 2, 3, 4, 5, 6) ══ */
+                    /* ══ ALL COUNTERS VIEW ══ */
                     terminals.map((t) => (
                         <div
                             key={t.name}
@@ -154,59 +164,56 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
                         </div>
                     ))
                 ) : (
-                    /* ══ SPECIFIC COUNTER FILTER VIEW (Receipt Cards) ══ */
+                    /* ══ SPECIFIC COUNTER FILTER VIEW (Scalloped Receipt Cards) ══ */
                     liveInvoices.map((inv) => (
                         <div
                             key={inv.id}
-                            className="relative flex flex-col drop-shadow-xs group cursor-pointer"
+                            className="relative flex flex-col drop-shadow-2xs group cursor-pointer"
                         >
-                            {/* Top serrated edge */}
-                            <SerratedEdge position="top" />
+                            {/* Top Scalloped Wave Edge */}
+                            <ScallopedTopEdge color="#F4F5F8" stroke="#E2E8F0" />
 
                             {/* Main receipt body */}
-                            <div className="bg-[#F4F6F8] px-4 py-3 flex flex-col gap-2">
+                            <div className="bg-[#F4F5F8] border-x border-b border-[#E2E8F0] rounded-b-xl px-4 py-3 flex flex-col gap-2.5">
                                 {/* Row 1: Green dot + Invoice ID + Time */}
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-2">
-                                        <span className="w-2 h-2 rounded-full bg-[#22C55E] inline-block shrink-0" />
-                                        <span style={{ ...inter, fontWeight: 700, fontSize: "13px" }} className="text-slate-800">
+                                        <span className="w-2.5 h-2.5 rounded-full bg-[#6EE7B7] inline-block shrink-0" />
+                                        <span style={{ ...inter, fontWeight: 700, fontSize: "13px" }} className="text-[#191C1E]">
                                             {inv.id}
                                         </span>
                                     </div>
-                                    <span style={{ ...inter, fontWeight: 500, fontSize: "11px" }} className="text-slate-400">
+                                    <span style={{ ...inter, fontWeight: 500, fontSize: "11.5px" }} className="text-[#515F73]">
                                         {inv.time}
                                     </span>
                                 </div>
 
                                 {/* Row 2: Labels */}
-                                <div className="flex items-center justify-between">
-                                    <span style={{ ...inter, fontWeight: 500, fontSize: "11px" }} className="text-slate-400">
+                                <div className="flex items-center justify-between mt-1">
+                                    <span style={{ ...inter, fontWeight: 500, fontSize: "11px" }} className="text-[#515F73]">
                                         Total Items
                                     </span>
-                                    <span style={{ ...inter, fontWeight: 500, fontSize: "11px" }} className="text-slate-400">
+                                    <span style={{ ...inter, fontWeight: 500, fontSize: "11px" }} className="text-[#515F73]">
                                         Amount
                                     </span>
                                 </div>
 
                                 {/* Row 3: Values */}
                                 <div className="flex items-center justify-between">
-                                    <span style={{ ...inter, fontWeight: 800, fontSize: "16px" }} className="text-slate-900">
+                                    <span style={{ ...inter, fontWeight: 700, fontSize: "15px" }} className="text-[#191C1E]">
                                         {inv.items}
                                     </span>
-                                    <div className="flex items-center gap-1.5">
-                                        <span style={{ ...inter, fontWeight: 700, fontSize: "11px" }} className="text-[#22C55E] tracking-wider">
+                                    <div className="flex items-center gap-2">
+                                        <span style={{ ...inter, fontWeight: 700, fontSize: "11.5px" }} className="text-[#22C55E] tracking-wider uppercase">
                                             {inv.method}
                                         </span>
-                                        <span style={{ ...inter, fontWeight: 800, fontSize: "14px" }} className="text-[#0053DB] inline-flex items-center gap-0.5">
-                                            <BluecolorDIcon className="w-4 h-4 shrink-0" />
-                                            {inv.amount}
+                                        <span style={{ ...inter, fontWeight: 700, fontSize: "14px" }} className="text-[#0053DB] inline-flex items-center gap-1">
+                                            <BluecolorDIcon className="w-3.5 h-3.5 shrink-0" />
+                                            <span>{inv.amount}</span>
                                         </span>
                                     </div>
                                 </div>
                             </div>
-
-                            {/* Bottom serrated edge */}
-                            <SerratedEdge position="bottom" />
                         </div>
                     ))
                 )}
