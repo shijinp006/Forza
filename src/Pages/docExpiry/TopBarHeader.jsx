@@ -14,10 +14,10 @@ export const TopBarHeader = ({ dateFilter, setDateFilter }) => {
 
     return (
         <div
-            className="mx-4 mt-4 sm:mx-6 sm:mt-5 rounded-2xl overflow-visible shrink-0 relative z-30"
+            className="mx-4 mt-4 sm:mx-6 sm:mt-5 rounded-2xl overflow-visible shrink-0 relative z-30 border border-[#CD77FF]/60"
             style={{
-                background: "#5949BE 0%",
-                boxShadow: "0 8px 32px rgba(89, 73, 190, 0.45), 0 4px 16px rgba(205, 119, 255, 0.3), 0 0 0 4px rgba(205, 119, 255, 0.15)",
+                background: "#5949BE",
+                boxShadow: "0 0 0 1px rgba(205, 119, 255, 0.5), 0 0 18px rgba(205, 119, 255, 0.55), 0 0 35px rgba(109, 65, 214, 0.45), 0 8px 32px rgba(79, 56, 193, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.35)",
             }}
         >
             <div className="flex items-center justify-between px-5 py-3">
