@@ -146,7 +146,7 @@ export function ShiftOverview({ counter }) {
 
                 {/* ── Right Panel: Collection Distribution Donut ── */}
                 <div className="bg-white rounded-2xl border border-[#C6C6CD] p-4 sm:p-5 flex flex-col justify-between items-center h-full shadow-2xs ">
-                    <h3 style={{ ...inter, fontWeight: 700, fontSize: "12.5px" }} className="text-slate-800 self-start">
+                    <h3 style={{ ...inter, fontWeight: 700, fontSize: "12.5px" }} className="text-slate-800 self-center sm:self-start text-center sm:text-left">
                         Collection Distribution
                     </h3>
 

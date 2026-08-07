@@ -195,7 +195,7 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
 
                 {/* ── COLLECTION DISTRIBUTION DONUT ── */}
                 <div className="w-full sm:w-[330px]  min-h-[350px] bg-white border border-[#E0E3E5] shadow-[0_4px_20px_rgba(0,0,0,0.04)] rounded-2xl p-5 flex flex-col items-center justify-between shrink-0">
-                    <h3 style={{ ...poppins, fontWeight: 700, fontSize: "14px" }} className="text-slate-900 self-start mb-2">
+                    <h3 style={{ ...poppins, fontWeight: 700, fontSize: "14px" }} className="text-slate-900 self-center sm:self-start text-center sm:text-left mb-2">
                         Collection Distribution
                     </h3>
 
@@ -240,7 +240,7 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
                     </div>
 
                     {/* Legend */}
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 w-full mt-3 pt-3 border-t border-gray-100">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 w-full mt-3 pt-3 border-t border-gray-100 justify-items-center sm:justify-items-start">
                         {collectionDistribution.map((item) => {
                             const p = Number(item.percentage) || 0;
                             const color = item.color || getTypeColor(item.type, p);

@@ -19,8 +19,8 @@ export function CashiersPerformanceTable({ viewType, setViewType }) {
                 {/* Inner Header Row matching screenshot */}
                 <div className="flex items-center justify-between px-4 py-3 sm:px-5 sm:py-3.5 border-b border-gray-200/80 bg-[#F3F5F8]">
                     <div className="flex items-center gap-2">
-                        <h3 style={{ ...poppins, fontWeight: 600, fontSize: "14px" }} className="text-slate-900 tracking-tight">
-                            Top Performing Cashiers
+                        <h3 style={{ ...poppins, fontWeight: 600 }} className="text-slate-900 tracking-tight leading-tight text-[11.5px] sm:text-[14px]">
+                            <span className="whitespace-nowrap">Top Performing</span> <span className="whitespace-nowrap">Cashiers</span>
                         </h3>
                         <CashierIcon className="w-5 h-5 shrink-0" />
                     </div>
