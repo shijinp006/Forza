@@ -112,36 +112,36 @@ export const VehiclesTab = ({ vehicles }) => {
                             {paginatedVehicles.length > 0 ? (
                                 paginatedVehicles.map((v, idx) => (
                                     <tr key={idx} className="border-b border-gray-50 hover:bg-violet-50/40 transition-colors">
-                                        <td className="px-4 py-3.5">
-                                            <span className="inline-block bg-slate-100 border border-slate-200 text-[#2B2F34] font-semibold px-2.5 py-1 rounded text-xs">
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <span className="inline-block bg-slate-100 border border-slate-200 text-[#2B2F34] font-semibold px-2.5 py-1 rounded text-[10px] sm:text-xs whitespace-nowrap">
                                                 {v.number}
                                             </span>
                                         </td>
-                                        <td className="px-4 py-3.5">
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
                                             <div>
-                                                <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-[#2B2F34]">
+                                                <p style={{ ...inter, fontWeight: 600 }} className="text-[#2B2F34] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                     {v.model}
                                                 </p>
-                                                <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-[#585C62]">
+                                                <p style={{ ...inter, fontWeight: 400 }} className="text-[#585C62] text-[10px] sm:text-[11px] whitespace-nowrap">
                                                     {v.subtext}
                                                 </p>
                                             </div>
                                         </td>
-                                        <td className="px-4 py-3.5">
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
                                             <div className="flex items-center gap-2.5">
-                                                <img src={v.avatar} alt={v.driver} className="w-7 h-7 rounded-full object-cover" />
-                                                <span style={{ ...inter, fontWeight: 500, fontSize: "13px" }} className="text-[#2B2F34]">
+                                                <img src={v.avatar} alt={v.driver} className="w-7 h-7 rounded-full object-cover shrink-0" />
+                                                <span style={{ ...inter, fontWeight: 500 }} className="text-[#2B2F34] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                     {v.driver}
                                                 </span>
                                             </div>
                                         </td>
-                                        <td className="px-4 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-[#2B2F34]">
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <span style={{ ...inter, fontWeight: 400 }} className="text-[#2B2F34] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                 {v.insuranceExp}
                                             </span>
                                         </td>
-                                        <td className="px-4 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-[#2B2F34]">
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <span style={{ ...inter, fontWeight: 400 }} className="text-[#2B2F34] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                 {v.regExp}
                                             </span>
                                         </td>

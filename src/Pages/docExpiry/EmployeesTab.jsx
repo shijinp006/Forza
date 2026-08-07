@@ -148,38 +148,38 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                                                 : "hover:bg-violet-50/70"
                                                 }`}
                                         >
-                                            <td className="px-3.5 py-2">
+                                            <td className="px-3.5 py-2 whitespace-nowrap">
                                                 <div className="flex items-center gap-2">
                                                     <Avatar emp={emp} />
-                                                    <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-[#191C1E] truncate">
+                                                    <span style={{ ...inter, fontWeight: 500 }} className="text-[#191C1E] text-[11px] sm:text-[12px] truncate whitespace-nowrap">
                                                         {emp.name}
                                                     </span>
                                                 </div>
                                             </td>
-                                            <td className="px-3.5 py-2">
-                                                <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-[#191C1E]">
+                                            <td className="px-3.5 py-2 whitespace-nowrap">
+                                                <span style={{ ...inter, fontWeight: 400 }} className="text-[#191C1E] text-[11px] sm:text-[12px] whitespace-nowrap">
                                                     {emp.id}
                                                 </span>
                                             </td>
-                                            <td className="px-3.5 py-2">
-                                                <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-[#191C1E] truncate block">
+                                            <td className="px-3.5 py-2 whitespace-nowrap">
+                                                <span style={{ ...inter, fontWeight: 400 }} className="text-[#191C1E] text-[11px] sm:text-[12px] truncate block whitespace-nowrap">
                                                     {emp.dept}
                                                 </span>
                                             </td>
-                                            <td className="px-3.5 py-2">
-                                                <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-[#191C1E] whitespace-nowrap">
+                                            <td className="px-3.5 py-2 whitespace-nowrap">
+                                                <span style={{ ...inter, fontWeight: 500 }} className="text-[#191C1E] text-[11px] sm:text-[12px] whitespace-nowrap">
                                                     {emp.date}
                                                 </span>
                                             </td>
                                             {!isDetailOpen && (
-                                                <td className="px-3.5 py-2">
-                                                    <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-[#191C1E]">
+                                                <td className="px-3.5 py-2 whitespace-nowrap">
+                                                    <span style={{ ...inter, fontWeight: 400 }} className="text-[#191C1E] text-[11px] sm:text-[12px] whitespace-nowrap">
                                                         {emp.doc}
                                                     </span>
                                                 </td>
                                             )}
-                                            <td className="px-3.5 py-2 text-right">
-                                                <span style={{ ...inter, fontWeight: 700, fontSize: "12.5px" }} className={emp.color}>
+                                            <td className="px-3.5 py-2 text-right whitespace-nowrap">
+                                                <span style={{ ...inter, fontWeight: 700 }} className={`${emp.color} text-[11px] sm:text-[12.5px] whitespace-nowrap`}>
                                                     {emp.days}
                                                 </span>
                                             </td>

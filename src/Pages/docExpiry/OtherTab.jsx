@@ -21,8 +21,8 @@ export const OtherTab = ({ actionItems }) => {
 
     return (
         <div className="px-4 sm:px-6 pb-8 flex flex-col md:flex-row gap-5 items-start">
-            {/* Left: Action Items Table (Desktop View) */}
-            <div className="hidden md:block flex-1 min-w-0 bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden w-full h-auto min-h-[500px]">
+            {/* Left: Action Items Table (Visible on Mobile with X-axis scroll & Desktop) */}
+            <div className="w-full flex-1 min-w-0 bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden h-auto min-h-[500px] order-2 md:order-1">
                 <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
                     <div className="flex items-center gap-3">
                         <h2 style={{ ...inter, fontWeight: 700, fontSize: "15px" }} className="text-[#2B2F34]">
@@ -59,8 +59,8 @@ export const OtherTab = ({ actionItems }) => {
                     )}
                 </div>
 
-                <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse min-w-[500px]">
+                <div className="overflow-x-auto w-full">
+                    <table className="w-full text-left border-collapse min-w-[550px]">
                         <thead>
                             <tr className="border-b border-gray-100 bg-gray-50/50">
                                 <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">EMPLOYEE / EVENT</th>
@@ -73,33 +73,33 @@ export const OtherTab = ({ actionItems }) => {
                             {filteredItems.length > 0 ? (
                                 filteredItems.map((item, idx) => (
                                     <tr key={idx} className="border-b border-gray-50 hover:bg-violet-50/40 transition-colors">
-                                        <td className="px-4 py-3.5">
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-semibold text-xs flex items-center justify-center border border-slate-200">
+                                                <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-semibold text-xs flex items-center justify-center border border-slate-200 shrink-0">
                                                     {item.initials}
                                                 </div>
                                                 <div>
-                                                    <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-[#2B2F34]">
+                                                    <p style={{ ...inter, fontWeight: 600 }} className="text-[#2B2F34] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                         {item.name}
                                                     </p>
-                                                    <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-[#585C62]">
+                                                    <p style={{ ...inter, fontWeight: 400 }} className="text-[#585C62] text-[10px] sm:text-[11px] whitespace-nowrap">
                                                         {item.subtext}
                                                     </p>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="px-4 py-3.5">
-                                            <span className={`inline-block font-medium px-2.5 py-0.5 rounded text-xs ${item.categoryBg}`}>
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <span className={`inline-block font-medium px-2.5 py-0.5 rounded text-[10px] sm:text-xs whitespace-nowrap ${item.categoryBg}`}>
                                                 {item.category}
                                             </span>
                                         </td>
-                                        <td className="px-4 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 500, fontSize: "12.5px" }} className="text-[#2B2F34]">
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <span style={{ ...inter, fontWeight: 500 }} className="text-[#2B2F34] text-[11px] sm:text-[12.5px] whitespace-nowrap">
                                                 {item.date}
                                             </span>
                                         </td>
-                                        <td className="px-4 py-3.5">
-                                            <span style={{ ...inter, fontSize: "12.5px" }} className={item.statusColor}>
+                                        <td className="px-4 py-3.5 whitespace-nowrap">
+                                            <span style={{ ...inter }} className={`${item.statusColor} text-[11px] sm:text-[12.5px] whitespace-nowrap`}>
                                                 {item.status}
                                             </span>
                                         </td>
@@ -123,13 +123,15 @@ export const OtherTab = ({ actionItems }) => {
                 </div>
             </div>
 
-            {/* Right: Calendar Widget (with integrated details for mobile view) */}
-            <CalendarWidget
-                actionItems={actionItems}
-                filteredActionItems={filteredItems}
-                selectedDay={selectedDay}
-                setSelectedDay={setSelectedDay}
-            />
+            {/* Right: Calendar Widget (First on mobile order-1, second on desktop order-2) */}
+            <div className="w-full md:w-auto order-1 md:order-2">
+                <CalendarWidget
+                    actionItems={actionItems}
+                    filteredActionItems={filteredItems}
+                    selectedDay={selectedDay}
+                    setSelectedDay={setSelectedDay}
+                />
+            </div>
         </div>
     );
 };

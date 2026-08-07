@@ -85,43 +85,43 @@ export const CompanyDocsTab = ({ companyDocs }) => {
                             {paginatedCompanyDocs.length > 0 ? (
                                 paginatedCompanyDocs.map((doc, idx) => (
                                     <tr key={idx} className="border-b border-gray-50 hover:bg-violet-50/40 transition-colors">
-                                        <td className="px-5 py-3.5">
+                                        <td className="px-5 py-3.5 whitespace-nowrap">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-8.5 h-8.5 rounded-xl bg-[#E5E9F8] flex items-center justify-center shrink-0 shadow-2xs">
                                                     {getDocIcon(doc)}
                                                 </div>
                                                 <div>
-                                                    <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-[#2B2F34]">
+                                                    <p style={{ ...inter, fontWeight: 600 }} className="text-[#2B2F34] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                         {doc.name}
                                                     </p>
-                                                    <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-[#585C62]">
+                                                    <p style={{ ...inter, fontWeight: 400 }} className="text-[#585C62] text-[10px] sm:text-[11px] whitespace-nowrap">
                                                         {doc.subtext}
                                                     </p>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="px-5 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-[#2B2F34]">
+                                        <td className="px-5 py-3.5 whitespace-nowrap">
+                                            <span style={{ ...inter, fontWeight: 600 }} className="text-[#2B2F34] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                 {doc.idNumber}
                                             </span>
                                         </td>
-                                        <td className="px-5 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-[#585C62]">
+                                        <td className="px-5 py-3.5 whitespace-nowrap">
+                                            <span style={{ ...inter, fontWeight: 400 }} className="text-[#585C62] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                 {doc.authority}
                                             </span>
                                         </td>
-                                        <td className="px-5 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-[#585C62]">
+                                        <td className="px-5 py-3.5 whitespace-nowrap">
+                                            <span style={{ ...inter, fontWeight: 400 }} className="text-[#585C62] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                 {doc.issueDate}
                                             </span>
                                         </td>
-                                        <td className="px-5 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 700, fontSize: "13px" }} className="text-[#B41340]">
+                                        <td className="px-5 py-3.5 whitespace-nowrap">
+                                            <span style={{ ...inter, fontWeight: 700 }} className="text-[#B41340] text-[11px] sm:text-[13px] whitespace-nowrap">
                                                 {doc.expiryDate}
                                             </span>
                                         </td>
-                                        <td className="px-5 py-3.5 text-right">
-                                            <span className="inline-block bg-rose-50 text-[#B41340] font-semibold px-2.5 py-1 rounded-full text-xs">
+                                        <td className="px-5 py-3.5 text-right whitespace-nowrap">
+                                            <span className="inline-block bg-rose-50 text-[#B41340] font-semibold px-2.5 py-1 rounded-full text-[10px] sm:text-xs whitespace-nowrap">
                                                 • {doc.daysLeft}
                                             </span>
                                         </td>
