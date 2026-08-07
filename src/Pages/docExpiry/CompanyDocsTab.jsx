@@ -49,11 +49,11 @@ export const CompanyDocsTab = ({ companyDocs }) => {
             <div className="bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden">
                 {/* Header Row */}
                 <div className="flex items-center gap-4 px-5 py-4 border-b border-gray-100">
-                    <h2 style={{ ...inter, fontWeight: 700, fontSize: "16px" }} className="text-slate-800 shrink-0">
+                    <h2 style={{ ...inter, fontWeight: 700, fontSize: "16px" }} className="text-[#2B2F34] shrink-0">
                         Document Repository
                     </h2>
                     <div className="relative">
-                        <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6B7280]" />
                         <input
                             type="text"
                             placeholder="Search documents..."
@@ -73,12 +73,12 @@ export const CompanyDocsTab = ({ companyDocs }) => {
                     <table className="w-full text-left border-collapse min-w-[700px]">
                         <thead>
                             <tr className="border-b border-gray-100 bg-gray-50/50">
-                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">DOCUMENT NAME</th>
-                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">ID NUMBER</th>
-                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">AUTHORITY</th>
-                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">ISSUE DATE</th>
-                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">EXPIRY DATE</th>
-                                <th className="px-5 py-3 text-right font-semibold text-[10.5px] text-gray-400 tracking-wider">STATUS</th>
+                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">DOCUMENT NAME</th>
+                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">ID NUMBER</th>
+                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">AUTHORITY</th>
+                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">ISSUE DATE</th>
+                                <th className="px-5 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">EXPIRY DATE</th>
+                                <th className="px-5 py-3 text-right font-semibold text-[10.5px] text-[#585C62] tracking-wider">STATUS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,37 +91,37 @@ export const CompanyDocsTab = ({ companyDocs }) => {
                                                     {getDocIcon(doc)}
                                                 </div>
                                                 <div>
-                                                    <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-slate-800">
+                                                    <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-[#2B2F34]">
                                                         {doc.name}
                                                     </p>
-                                                    <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-slate-400">
+                                                    <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-[#585C62]">
                                                         {doc.subtext}
                                                     </p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td className="px-5 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-slate-800">
+                                            <span style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-[#2B2F34]">
                                                 {doc.idNumber}
                                             </span>
                                         </td>
                                         <td className="px-5 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-slate-600">
+                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-[#585C62]">
                                                 {doc.authority}
                                             </span>
                                         </td>
                                         <td className="px-5 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-slate-600">
+                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-[#585C62]">
                                                 {doc.issueDate}
                                             </span>
                                         </td>
                                         <td className="px-5 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 700, fontSize: "13px" }} className="text-rose-600">
+                                            <span style={{ ...inter, fontWeight: 700, fontSize: "13px" }} className="text-[#B41340]">
                                                 {doc.expiryDate}
                                             </span>
                                         </td>
                                         <td className="px-5 py-3.5 text-right">
-                                            <span className="inline-block bg-rose-50 text-rose-600 font-semibold px-2.5 py-1 rounded-full text-xs">
+                                            <span className="inline-block bg-rose-50 text-[#B41340] font-semibold px-2.5 py-1 rounded-full text-xs">
                                                 • {doc.daysLeft}
                                             </span>
                                         </td>

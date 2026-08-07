@@ -28,7 +28,7 @@ export function SummaryCards({ activeCounter }) {
                         <div className="flex items-center justify-between">
                             <span
                                 style={{ ...inter, fontWeight: 500, fontSize: "12px" }}
-                                className="text-slate-500"
+                                className="text-[#424656"
                             >
                                 {card.label}
                             </span>
@@ -59,7 +59,7 @@ export function SummaryCards({ activeCounter }) {
                         {/* Sub-label */}
                         <p
                             style={{ ...inter, fontWeight: 400, fontSize: "11px" }}
-                            className="text-slate-400"
+                            className="text-[#424656]"
                         >
                             {card.sub}
                         </p>

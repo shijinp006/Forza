@@ -1,6 +1,6 @@
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
-import { barData, collectionDistribution, cashiers } from "../../data/posData";
+import { barData, collectionDistribution, cashiers, getTypeColor } from "../../data/posData";
 import DIcon from "../../assets/D.svg?react";
 
 const poppins = { fontFamily: "Poppins, sans-serif" };
@@ -16,6 +16,28 @@ const MAX_VAL = 5000;
 const Y_TICKS = [5000, 4000, 3000, 2000, 1000, 0];
 
 export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewType }) {
+    let calculatedTotal = 0;
+
+    if (!activeCounter || activeCounter === "All Counters") {
+        calculatedTotal = cashiers.reduce((acc, c) => {
+            const num = parseFloat(String(c.sales).replace(/[^0-9.]/g, "")) || 0;
+            return acc + num;
+        }, 0);
+    } else {
+        const normalizedActive = activeCounter.replace(/\s+/g, "").toUpperCase();
+        const match = cashiers.find((c) => c.counter.replace(/\s+/g, "").toUpperCase() === normalizedActive)
+            || barData.find((b) => b.id.replace(/\s+/g, "").toUpperCase() === normalizedActive || b.label.replace(/\s+/g, "").toUpperCase() === normalizedActive);
+
+        if (match) {
+            calculatedTotal = parseFloat(String(match.sales || match.amount).replace(/[^0-9.]/g, "")) || 0;
+        }
+    }
+
+    const totalCollectedFormatted = calculatedTotal.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
+
     const displayBarData = barData.map((bar) => {
         if (viewType === "QTY") {
             const cashierItem = cashiers.find((c) => c.counter === bar.label);
@@ -61,7 +83,7 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
                         }}
                     >
                         {Y_TICKS.map((t) => (
-                            <span key={t}>{t}</span>
+                            <span key={t} className="text-[#585C6299]">{t}</span>
                         ))}
                     </div>
 
@@ -172,23 +194,39 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
                 </div>
 
                 {/* ── COLLECTION DISTRIBUTION DONUT ── */}
-                <div className="w-full sm:w-[280px] bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] rounded-2xl p-5 flex flex-col items-center shrink-0">
+                <div className="w-full sm:w-[330px] bg-white border border-[#E0E3E5] shadow-[0_4px_20px_rgba(0,0,0,0.04)] rounded-2xl p-5 flex flex-col items-center shrink-0">
                     <h3 style={{ ...poppins, fontWeight: 700, fontSize: "14px" }} className="text-slate-900 self-start mb-2">
                         Collection Distribution
                     </h3>
 
                     {/* Donut SVG */}
-                    <div className="relative w-full h-48 flex items-center justify-center">
+                    <div className="relative w-full h-56 flex items-center justify-center">
                         <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
-                            <circle cx="50" cy="50" r="38" stroke="#F1F5F9" strokeWidth="11" fill="transparent" />
-                            <circle cx="50" cy="50" r="38" stroke="#22C55E" strokeWidth="11" fill="transparent"
-                                strokeDasharray="95.5 143.2" strokeDashoffset="0" strokeLinecap="round" />
-                            <circle cx="50" cy="50" r="38" stroke="#3B82F6" strokeWidth="11" fill="transparent"
-                                strokeDasharray="71.6 167.1" strokeDashoffset="-98" strokeLinecap="round" />
-                            <circle cx="50" cy="50" r="38" stroke="#F97316" strokeWidth="11" fill="transparent"
-                                strokeDasharray="35.8 202.9" strokeDashoffset="-172" strokeLinecap="round" />
-                            <circle cx="50" cy="50" r="38" stroke="#EF4444" strokeWidth="11" fill="transparent"
-                                strokeDasharray="11.9 226.8" strokeDashoffset="-210" strokeLinecap="round" />
+                            <circle cx="50" cy="50" r="38" stroke="#F1F5F9" strokeWidth="13" fill="transparent" />
+                            {(() => {
+                                const C = 2 * Math.PI * 38;
+                                let accumOffset = 0;
+                                return collectionDistribution.map((item) => {
+                                    const p = Number(item.percentage) || 0;
+                                    const color = item.color || getTypeColor(item.type, p);
+                                    const dashLength = Math.max(0, (p / 100) * C - (p > 0 ? 4 : 0));
+                                    const gapLength = C - dashLength;
+                                    const offset = accumOffset;
+                                    accumOffset -= (p / 100) * C;
+                                    return (
+                                        <circle
+                                            key={item.type}
+                                            cx="50" cy="50" r="38"
+                                            stroke={color}
+                                            strokeWidth="13"
+                                            fill="transparent"
+                                            strokeDasharray={`${dashLength.toFixed(1)} ${gapLength.toFixed(1)}`}
+                                            strokeDashoffset={offset.toFixed(1)}
+                                            strokeLinecap="round"
+                                        />
+                                    );
+                                });
+                            })()}
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
                             <span style={{ ...inter, fontWeight: 500, fontSize: "10.5px" }} className="text-slate-400 leading-tight">
@@ -196,19 +234,25 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
                             </span>
                             <span style={{ ...poppins, fontWeight: 700, fontSize: "13.5px" }} className="text-slate-900 leading-tight mt-1 flex items-center justify-center gap-1">
                                 <DIcon className="w-3.5 h-3.5 text-slate-900 shrink-0" />
-                                <span>51212608.00</span>
+                                <span>{totalCollectedFormatted}</span>
                             </span>
                         </div>
                     </div>
 
                     {/* Legend */}
                     <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 w-full mt-3 pt-3 border-t border-gray-100">
-                        {collectionDistribution.map((item) => (
-                            <div key={item.type} className="flex items-center gap-2">
-                                <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
-                                <span style={{ ...inter, fontSize: "11.5px", fontWeight: 500 }} className="text-slate-600 truncate">{item.label}</span>
-                            </div>
-                        ))}
+                        {collectionDistribution.map((item) => {
+                            const p = Number(item.percentage) || 0;
+                            const color = item.color || getTypeColor(item.type, p);
+                            return (
+                                <div key={item.type} className="flex items-center gap-2">
+                                    <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
+                                    <span style={{ ...inter, fontSize: "11.5px", fontWeight: 500 }} className="text-slate-600 truncate">
+                                        {item.type} ({p}%)
+                                    </span>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

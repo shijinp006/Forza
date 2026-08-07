@@ -25,7 +25,7 @@ export const OtherTab = ({ actionItems }) => {
             <div className="hidden md:block flex-1 min-w-0 bg-white rounded-2xl border border-gray-100 shadow-xs overflow-hidden w-full h-auto min-h-[500px]">
                 <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
                     <div className="flex items-center gap-3">
-                        <h2 style={{ ...inter, fontWeight: 700, fontSize: "15px" }} className="text-slate-800">
+                        <h2 style={{ ...inter, fontWeight: 700, fontSize: "15px" }} className="text-[#2B2F34]">
                             Upcoming Action Items
                         </h2>
                         {selectedDay !== null && (
@@ -52,7 +52,7 @@ export const OtherTab = ({ actionItems }) => {
                     ) : (
                         <button
                             style={{ ...inter, fontWeight: 500, fontSize: "12px" }}
-                            className="text-violet-600 hover:underline cursor-pointer"
+                            className="text-[#5949BE] hover:underline cursor-pointer"
                         >
                             View All
                         </button>
@@ -63,10 +63,10 @@ export const OtherTab = ({ actionItems }) => {
                     <table className="w-full text-left border-collapse min-w-[500px]">
                         <thead>
                             <tr className="border-b border-gray-100 bg-gray-50/50">
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">EMPLOYEE / EVENT</th>
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">CATEGORY</th>
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">DATE</th>
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">STATUS</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">EMPLOYEE / EVENT</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">CATEGORY</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">DATE</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">STATUS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,10 +79,10 @@ export const OtherTab = ({ actionItems }) => {
                                                     {item.initials}
                                                 </div>
                                                 <div>
-                                                    <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-slate-800">
+                                                    <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-[#2B2F34]">
                                                         {item.name}
                                                     </p>
-                                                    <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-slate-400">
+                                                    <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-[#585C62]">
                                                         {item.subtext}
                                                     </p>
                                                 </div>
@@ -94,7 +94,7 @@ export const OtherTab = ({ actionItems }) => {
                                             </span>
                                         </td>
                                         <td className="px-4 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 500, fontSize: "12.5px" }} className="text-slate-700">
+                                            <span style={{ ...inter, fontWeight: 500, fontSize: "12.5px" }} className="text-[#2B2F34]">
                                                 {item.date}
                                             </span>
                                         </td>

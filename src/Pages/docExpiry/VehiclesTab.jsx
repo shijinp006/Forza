@@ -39,7 +39,7 @@ export const VehiclesTab = ({ vehicles }) => {
                 {/* Filters Row */}
                 <div className="flex flex-wrap items-center gap-2.5 px-4 py-3 border-b border-gray-100">
                     <div className="relative">
-                        <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                        <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#6B7280]" />
                         <input
                             type="text"
                             placeholder="Search Vehicle ID..."
@@ -101,11 +101,11 @@ export const VehiclesTab = ({ vehicles }) => {
                     <table className="w-full text-left border-collapse min-w-[700px]">
                         <thead>
                             <tr className="border-b border-gray-100 bg-gray-50/50">
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">VEHICLE NUMBER</th>
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">MODEL</th>
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">DRIVER ASSIGNED</th>
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">INSURANCE EXPIRY</th>
-                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">REG EXPIRY</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">VEHICLE NUMBER</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">MODEL</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">DRIVER ASSIGNED</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">INSURANCE EXPIRY</th>
+                                <th className="px-4 py-3 text-left font-semibold text-[10.5px] text-[#585C62] tracking-wider">REG EXPIRY</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,16 +113,16 @@ export const VehiclesTab = ({ vehicles }) => {
                                 paginatedVehicles.map((v, idx) => (
                                     <tr key={idx} className="border-b border-gray-50 hover:bg-violet-50/40 transition-colors">
                                         <td className="px-4 py-3.5">
-                                            <span className="inline-block bg-slate-100 border border-slate-200 text-slate-700 font-semibold px-2.5 py-1 rounded text-xs">
+                                            <span className="inline-block bg-slate-100 border border-slate-200 text-[#2B2F34] font-semibold px-2.5 py-1 rounded text-xs">
                                                 {v.number}
                                             </span>
                                         </td>
                                         <td className="px-4 py-3.5">
                                             <div>
-                                                <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-slate-800">
+                                                <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-[#2B2F34]">
                                                     {v.model}
                                                 </p>
-                                                <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-slate-400">
+                                                <p style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-[#585C62]">
                                                     {v.subtext}
                                                 </p>
                                             </div>
@@ -130,18 +130,18 @@ export const VehiclesTab = ({ vehicles }) => {
                                         <td className="px-4 py-3.5">
                                             <div className="flex items-center gap-2.5">
                                                 <img src={v.avatar} alt={v.driver} className="w-7 h-7 rounded-full object-cover" />
-                                                <span style={{ ...inter, fontWeight: 500, fontSize: "13px" }} className="text-slate-800">
+                                                <span style={{ ...inter, fontWeight: 500, fontSize: "13px" }} className="text-[#2B2F34]">
                                                     {v.driver}
                                                 </span>
                                             </div>
                                         </td>
                                         <td className="px-4 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-slate-600">
+                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-[#2B2F34]">
                                                 {v.insuranceExp}
                                             </span>
                                         </td>
                                         <td className="px-4 py-3.5">
-                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-slate-600">
+                                            <span style={{ ...inter, fontWeight: 400, fontSize: "13px" }} className="text-[#2B2F34]">
                                                 {v.regExp}
                                             </span>
                                         </td>

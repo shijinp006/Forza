@@ -57,7 +57,7 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                 {/* Filters Row */}
                 <div className="flex flex-wrap items-center gap-2 px-3.5 py-2.5 border-b border-gray-100 shrink-0 relative z-20">
                     <div className="relative">
-                        <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                        <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#726C6C]" />
                         <input
                             type="text"
                             placeholder="Search Employee..."
@@ -67,7 +67,7 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                                 setEmpPage(1);
                             }}
                             style={{ ...inter, fontSize: "12px" }}
-                            className="pl-7 pr-2.5 py-1.5 rounded-lg border border-gray-200 bg-gray-50 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-200 focus:border-violet-300 w-[160px]"
+                            className="pl-7 pr-2.5 py-1.5 rounded-lg border border-gray-200 bg-gray-50 text-[#6B7280] placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-200 focus:border-violet-300 w-[160px]"
                         />
                     </div>
 
@@ -104,7 +104,7 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                                 setEmpPage(1);
                             }}
                             title="Reset Filters"
-                            className="w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer shrink-0 hover:opacity-80 transition"
+                            className="w-8 h-8 rounded-lg flex items-center  justify-center cursor-pointer shrink-0 hover:opacity-80 transition"
                         >
                             <SortIcon className="w-8 h-8" />
                         </button>
@@ -123,16 +123,16 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                     <table className="w-full text-left border-collapse">
                         <thead className={isDetailOpen ? "sticky top-0 bg-gray-50 z-10 shadow-xs" : ""}>
                             <tr className="border-b border-gray-100 bg-gray-50/50">
-                                <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">EMPLOYEE</th>
-                                <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">ID</th>
-                                <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">DEPARTMENT</th>
-                                <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">
+                                <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-[#515F73] tracking-wider">EMPLOYEE</th>
+                                <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-[#515F73] tracking-wider">ID</th>
+                                <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-[#515F73] tracking-wider">DEPARTMENT</th>
+                                <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-[#515F73] tracking-wider">
                                     {isDetailOpen ? "VISA EXPIRY" : "EXPIRY DATE"}
                                 </th>
                                 {!isDetailOpen && (
-                                    <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-gray-400 tracking-wider">DOC TYPE</th>
+                                    <th className="px-3.5 py-2.5 text-left font-semibold text-[10.5px] text-[#515F73] tracking-wider">DOC TYPE</th>
                                 )}
-                                <th className="px-3.5 py-2.5 text-right font-semibold text-[10.5px] text-gray-400 tracking-wider">DAYS REM.</th>
+                                <th className="px-3.5 py-2.5 text-right font-semibold text-[10.5px] text-[#515F73] tracking-wider">DAYS REM.</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -151,29 +151,29 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                                             <td className="px-3.5 py-2">
                                                 <div className="flex items-center gap-2">
                                                     <Avatar emp={emp} />
-                                                    <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-gray-800 truncate">
+                                                    <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-[#191C1E] truncate">
                                                         {emp.name}
                                                     </span>
                                                 </div>
                                             </td>
                                             <td className="px-3.5 py-2">
-                                                <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-gray-500">
+                                                <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-[#191C1E]">
                                                     {emp.id}
                                                 </span>
                                             </td>
                                             <td className="px-3.5 py-2">
-                                                <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-gray-500 truncate block">
+                                                <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-[#191C1E] truncate block">
                                                     {emp.dept}
                                                 </span>
                                             </td>
                                             <td className="px-3.5 py-2">
-                                                <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-gray-700 whitespace-nowrap">
+                                                <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-[#191C1E] whitespace-nowrap">
                                                     {emp.date}
                                                 </span>
                                             </td>
                                             {!isDetailOpen && (
                                                 <td className="px-3.5 py-2">
-                                                    <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-gray-500">
+                                                    <span style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-[#191C1E]">
                                                         {emp.doc}
                                                     </span>
                                                 </td>

@@ -163,12 +163,30 @@ export const counterDetailsData = {
     }
 };
 
+/* ── Fixed Type Colors & Helper ── */
+export const TYPE_COLORS = {
+    Cash: "#22C55E",   // Always Green
+    Card: "#3B82F6",   // Always Blue
+    Bank: "#F97316",   // Always Orange
+    Credit: "#EF4444", // Always Red
+};
+
+export function getTypeColor(type, percentage) {
+    const key = String(type).trim();
+    if (TYPE_COLORS[key]) return TYPE_COLORS[key];
+    const p = Number(percentage) || 0;
+    if (p >= 40) return "#22C55E";
+    if (p >= 26) return "#3B82F6";
+    if (p >= 10) return "#F97316";
+    return "#EF4444";
+}
+
 /* ── Collection distribution (shown inside Shift Overview) ── */
 export const collectionDistribution = [
-    { type: "Cash", percentage: 40, color: "#22C55E", label: "Cash (40%)", amount: "2,243.00" },
-    { type: "Card", percentage: 30, color: "#3B82F6", label: "Card (30%)", amount: "1,682.40" },
-    { type: "Bank", percentage: 15, color: "#F97316", label: "Bank (15%)", amount: "841.20" },
-    { type: "Credit", percentage: 5, color: "#EF4444", label: "Credit (5%)", amount: "280.40" },
+    { type: "Cash", percentage: 40, color: "#22C55E", amount: "2,243.00" },
+    { type: "Card", percentage: 30, color: "#3B82F6", amount: "1,682.40" },
+    { type: "Bank", percentage: 25, color: "#F97316", amount: "1,402.00" },
+    { type: "Credit", percentage: 5, color: "#EF4444", amount: "280.40" },
 ];
 
 /* ── Cashiers performance ── */

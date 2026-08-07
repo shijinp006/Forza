@@ -8,10 +8,10 @@ const inter = { fontFamily: "Inter, sans-serif" };
 export function CashiersPerformanceTable({ viewType, setViewType }) {
     return (
         <div>
-            <h2 style={{ ...poppins, fontWeight: 700, fontSize: "18px" }} className="text-slate-900">
+            <h2 style={{ ...poppins, fontWeight: 700, fontSize: "18px" }} className="text-[#000000]">
                 Performance Insights
             </h2>
-            <p style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-slate-500 mb-3">
+            <p style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="text-[#515F73] mb-3">
                 Operational performance across all counters and cashiers.
             </p>
 
@@ -57,7 +57,7 @@ export function CashiersPerformanceTable({ viewType, setViewType }) {
                     <div className="overflow-auto max-h-[300px]" style={{ scrollbarWidth: "thin" }}>
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className=" text-[10.5px] text-slate-400 font-semibold tracking-wider">
+                                <tr className=" text-[10.5px] text-[#45464D] font-semibold tracking-wider">
                                     <th className="py-2.5 px-3">RANK</th>
                                     <th className="py-2.5 px-3">CASHIER</th>
                                     <th className="py-2.5 px-3">COUNTER</th>
@@ -72,22 +72,22 @@ export function CashiersPerformanceTable({ viewType, setViewType }) {
                                         <td style={{ ...inter, fontWeight: 600, fontSize: "12px" }} className="py-3 px-3 text-violet-600">
                                             {item.rank}
                                         </td>
-                                        <td style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="py-3 px-3 text-slate-800">
+                                        <td style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="py-3 px-3 text-[#191C1E]">
                                             {item.name}
                                         </td>
-                                        <td style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="py-3 px-3 text-slate-600">
+                                        <td style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="py-3 px-3 text-[#191C1E]">
                                             {item.counter}
                                         </td>
-                                        <td style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="py-3 px-3 text-slate-600">
+                                        <td style={{ ...inter, fontWeight: 400, fontSize: "12px" }} className="py-3 px-3 text-[#191C1E]">
                                             {item.invoices}
                                         </td>
-                                        <td style={{ ...poppins, fontWeight: 700, fontSize: "12.5px" }} className="py-3 px-3 text-slate-900">
+                                        <td style={{ ...poppins, fontWeight: 700, fontSize: "12.5px" }} className="py-3 px-3 text-[#191C1E]">
                                             <span className="inline-flex items-center gap-1">
                                                 <DIcon className="w-3.5 h-3.5 text-slate-900 shrink-0" />
                                                 {item.sales}
                                             </span>
                                         </td>
-                                        <td style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="py-3 px-3 text-right text-slate-700">
+                                        <td style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="py-3 px-3 text-right text-[#191C1E]">
                                             {item.qty}
                                         </td>
                                     </tr>

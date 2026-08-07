@@ -9,14 +9,13 @@ export const StatCard = ({ stat, isActive, onClick }) => {
     return (
         <div
             onClick={onClick}
-            className={`flex-1 min-w-[170px] bg-white rounded-2xl p-4 flex flex-col justify-between gap-3 shadow-xs cursor-pointer transition-all ${
-                isActive
-                    ? "border-2 border-violet-500 ring-2 ring-violet-200/60 shadow-sm"
-                    : "border border-gray-100 hover:border-violet-200"
-            }`}
+            className={`flex-1 min-w-[170px] bg-white rounded-2xl p-4 flex flex-col justify-between gap-3 shadow-xs cursor-pointer transition-all ${isActive
+                ? "border-2 border-violet-500 ring-2 ring-violet-200/60 shadow-sm"
+                : "border border-gray-100 hover:border-violet-200"
+                }`}
         >
             <div className="flex items-center justify-between">
-                <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-gray-500">
+                <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-[#424656]">
                     {stat.label}
                 </span>
                 <div className={`w-8 h-8 rounded-xl ${stat.iconBg} flex items-center justify-center shrink-0`}>
@@ -33,7 +32,7 @@ export const StatCard = ({ stat, isActive, onClick }) => {
                 </p>
             </div>
             <div className="flex items-center justify-between">
-                <span style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-gray-400 truncate">
+                <span style={{ ...inter, fontWeight: 400, fontSize: "11px" }} className="text-[#726C6C] truncate">
                     {stat.sub}
                 </span>
                 {stat.hasArrow && (

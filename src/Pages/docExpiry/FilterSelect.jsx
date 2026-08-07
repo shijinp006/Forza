@@ -35,7 +35,7 @@ export const FilterSelect = ({
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
                 style={{ ...inter }}
-                className={`flex items-center justify-between gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#E2E1EC] hover:bg-[#d8d6e6] text-slate-800 font-medium transition cursor-pointer border overflow-hidden text-[10px] sm:text-xs whitespace-nowrap ${isOpen ? "border-slate-800 ring-1 ring-slate-800" : "border-transparent"
+                className={`flex items-center justify-between gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-[#E4E8F1] hover:bg-[#d8d6e6] text-[#2B2F34] font-medium transition cursor-pointer border overflow-hidden text-[10px] sm:text-xs whitespace-nowrap ${isOpen ? "border-slate-800 ring-1 ring-slate-800" : "border-transparent"
                     }`}
             >
                 <span className="truncate overflow-hidden text-[10px] sm:text-xs">{selectedLabel || placeholder}</span>
@@ -70,8 +70,8 @@ export const FilterSelect = ({
                                 }}
                                 style={{ ...inter, fontSize: "12px" }}
                                 className={`w-full text-left px-3 py-1.5 transition flex items-center justify-between cursor-pointer ${isSelected
-                                        ? "bg-violet-50 text-violet-700 font-semibold"
-                                        : "text-slate-700 hover:bg-gray-100 hover:text-slate-900"
+                                    ? "bg-violet-50 text-violet-700 font-semibold"
+                                    : "text-slate-700 hover:bg-gray-100 hover:text-slate-900"
                                     }`}
                             >
                                 <span className="truncate">{optLabel}</span>

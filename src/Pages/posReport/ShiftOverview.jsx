@@ -1,19 +1,34 @@
-import { shiftData, collectionDistribution, counterDetailsData } from "../../data/posData";
+import { shiftData, collectionDistribution, counterDetailsData, cashiers, getTypeColor } from "../../data/posData";
 import DIcon from "../../assets/D.svg?react";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 
 /* Donut segment data — circumference = 2π×38 ≈ 238.76 */
-const SEGMENTS = [
-    { color: "#22C55E", dashArray: "95.5 143.26", offset: "0" }, // Cash  40%
-    { color: "#3B82F6", dashArray: "71.6 167.16", offset: "-95.5" }, // Card  30%
-    { color: "#F97316", dashArray: "59.7 179.06", offset: "-167.1" }, // Bank  25%
-    { color: "#EF4444", dashArray: "11.9 226.86", offset: "-226.8" }, // Credit 5%
-];
 
 export function ShiftOverview({ counter }) {
     const currentShiftData = (counter && counterDetailsData[counter]?.shiftData) || shiftData;
     const { employee } = currentShiftData;
+
+    let calculatedTotal = 0;
+    if (currentShiftData?.totalCollection) {
+        calculatedTotal = parseFloat(String(currentShiftData.totalCollection).replace(/[^0-9.]/g, "")) || 0;
+    } else if (!counter || counter === "All Counters") {
+        calculatedTotal = cashiers.reduce((acc, c) => {
+            const num = parseFloat(String(c.sales).replace(/[^0-9.]/g, "")) || 0;
+            return acc + num;
+        }, 0);
+    } else {
+        const normalizedActive = counter.replace(/\s+/g, "").toUpperCase();
+        const match = cashiers.find((c) => c.counter.replace(/\s+/g, "").toUpperCase() === normalizedActive);
+        if (match) {
+            calculatedTotal = parseFloat(String(match.sales).replace(/[^0-9.]/g, "")) || 0;
+        }
+    }
+
+    const totalCollectedFormatted = calculatedTotal.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
 
     return (
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-4 sm:p-6 border border-gray-100 shadow-sm flex flex-col gap-4 h-auto md:h-[520px] overflow-y-auto">
@@ -136,21 +151,33 @@ export function ShiftOverview({ counter }) {
                     </h3>
 
                     {/* Donut Chart */}
-                    <div className="relative w-40 h-40 my-auto flex items-center justify-center">
+                    <div className="relative w-48 h-48 sm:w-52 sm:h-52 my-auto flex items-center justify-center">
                         <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                            <circle cx="50" cy="50" r="38" stroke="#F1F5F9" strokeWidth="12" fill="transparent" />
-                            {SEGMENTS.map((seg, i) => (
-                                <circle
-                                    key={i}
-                                    cx="50" cy="50" r="38"
-                                    stroke={seg.color}
-                                    strokeWidth="12"
-                                    fill="transparent"
-                                    strokeDasharray={seg.dashArray}
-                                    strokeDashoffset={seg.offset}
-                                    strokeLinecap="round"
-                                />
-                            ))}
+                            <circle cx="50" cy="50" r="38" stroke="#F1F5F9" strokeWidth="13" fill="transparent" />
+                            {(() => {
+                                const C = 2 * Math.PI * 38;
+                                let accumOffset = 0;
+                                return collectionDistribution.map((item) => {
+                                    const p = Number(item.percentage) || 0;
+                                    const color = item.color || getTypeColor(item.type, p);
+                                    const dashLength = Math.max(0, (p / 100) * C - (p > 0 ? 4 : 0));
+                                    const gapLength = C - dashLength;
+                                    const offset = accumOffset;
+                                    accumOffset -= (p / 100) * C;
+                                    return (
+                                        <circle
+                                            key={item.type}
+                                            cx="50" cy="50" r="38"
+                                            stroke={color}
+                                            strokeWidth="13"
+                                            fill="transparent"
+                                            strokeDasharray={`${dashLength.toFixed(1)} ${gapLength.toFixed(1)}`}
+                                            strokeDashoffset={offset.toFixed(1)}
+                                            strokeLinecap="round"
+                                        />
+                                    );
+                                });
+                            })()}
                         </svg>
 
                         {/* Donut Center */}
@@ -160,30 +187,34 @@ export function ShiftOverview({ counter }) {
                             </span>
                             <span style={{ ...inter, fontSize: "16px", fontWeight: 700 }} className="text-slate-800 mt-0.5 inline-flex items-center gap-1">
                                 <DIcon className="w-4 h-4 text-slate-800 shrink-0" />
-                                <span>5608.00</span>
+                                <span>{totalCollectedFormatted}</span>
                             </span>
                         </div>
                     </div>
 
                     {/* Legend with values */}
                     <div className="flex flex-col gap-2 w-full pt-3 border-t border-gray-100 shrink-0">
-                        {collectionDistribution.map((item) => (
-                            <div key={item.type} className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <span
-                                        className="w-2.5 h-2.5 rounded-full shrink-0"
-                                        style={{ backgroundColor: item.color }}
-                                    />
-                                    <span style={{ ...inter, fontSize: "12.5px", fontWeight: 400 }} className="text-[#515F73]">
-                                        {item.label}
+                        {collectionDistribution.map((item) => {
+                            const p = Number(item.percentage) || 0;
+                            const color = item.color || getTypeColor(item.type, p);
+                            return (
+                                <div key={item.type} className="flex items-center justify-between">
+                                    <div className="flex items-center gap-2">
+                                        <span
+                                            className="w-2.5 h-2.5 rounded-full shrink-0"
+                                            style={{ backgroundColor: color }}
+                                        />
+                                        <span style={{ ...inter, fontSize: "12.5px", fontWeight: 400 }} className="text-[#515F73]">
+                                            {item.type} ({p}%)
+                                        </span>
+                                    </div>
+                                    <span style={{ ...inter, fontSize: "12.5px", fontWeight: 400 }} className="text-[#2B2F34] inline-flex items-center gap-0.5">
+                                        <DIcon className="w-3.5 h-3.5 text-[#2B2F34] shrink-0" />
+                                        <span>{item.amount}</span>
                                     </span>
                                 </div>
-                                <span style={{ ...inter, fontSize: "12.5px", fontWeight: 400 }} className="text-[#2B2F34] inline-flex items-center gap-0.5">
-                                    <DIcon className="w-3.5 h-3.5 text-[#2B2F34] shrink-0" />
-                                    <span>{item.amount}</span>
-                                </span>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
 

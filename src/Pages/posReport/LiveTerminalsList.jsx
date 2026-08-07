@@ -101,13 +101,13 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
                                             ...inter,
                                             fontWeight: 600,
                                             fontSize: "13px",
-                                            color: t.isOnline ? "#334155" : "#94A3B8",
+                                            color: t.isOnline ? "#191C1E" : "#94A3B8",
                                         }}
                                     >
                                         {t.name}
                                     </span>
                                 </div>
-                                <span style={{ ...inter, fontWeight: 400, fontSize: "11px", color: "#94A3B8" }}>
+                                <span style={{ ...inter, fontWeight: 400, fontSize: "11px", color: "#515F73" }}>
                                     {t.time}
                                 </span>
                             </div>
@@ -115,10 +115,10 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
                             {/* Row 2: Labels + Values */}
                             <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    <span style={{ ...inter, fontWeight: 400, fontSize: "10.5px", color: "#94A3B8" }}>
+                                    <span style={{ ...inter, fontWeight: 400, fontSize: "10.5px", color: "#515F73" }}>
                                         Total Invoices
                                     </span>
-                                    <span style={{ ...inter, fontWeight: 400, fontSize: "10.5px", color: "#94A3B8" }}>
+                                    <span style={{ ...inter, fontWeight: 400, fontSize: "10.5px", color: "#515F73" }}>
                                         Amount
                                     </span>
                                 </div>
