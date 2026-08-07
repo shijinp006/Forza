@@ -9,7 +9,7 @@ export const barData = [
     { id: "C 3", label: "C3", height: 53, amount: "Đ 24,100" },
     { id: "C 4", label: "C4", height: 42, amount: "Đ 18,900" },
     { id: "C 5", label: "C5", height: 32, amount: "Đ 14,500" },
-    { id: "C 6", label: "C6", height:  0, amount: "Đ 0" },
+    { id: "C 6", label: "C6", height: 0, amount: "Đ 0" },
 ];
 
 /* ── Summary cards (top 3) ── */
@@ -173,10 +173,10 @@ export const collectionDistribution = [
 
 /* ── Cashiers performance ── */
 export const cashiers = [
-    { rank: "#1", name: "Ahmed", counter: "C1", invoices: "07", sales: "Đ 32,100", qty: "140" },
-    { rank: "#2", name: "Bianca", counter: "C2", invoices: "07", sales: "Đ 29,750", qty: "160" },
-    { rank: "#3", name: "Carlos", counter: "C3", invoices: "05", sales: "Đ 24,100", qty: "125" },
-    { rank: "#4", name: "Dina", counter: "C4", invoices: "04", sales: "Đ 18,900", qty: "98" },
+    { rank: "#1", name: "Ahmed", counter: "C1", invoices: "07", sales: " 32,100", qty: "140" },
+    { rank: "#2", name: "Bianca", counter: "C2", invoices: "07", sales: " 29,750", qty: "160" },
+    { rank: "#3", name: "Carlos", counter: "C3", invoices: "05", sales: "24,100", qty: "125" },
+    { rank: "#4", name: "Dina", counter: "C4", invoices: "04", sales: "18,900", qty: "98" },
 ];
 
 /* ── Live terminals (All Counters view) ── */

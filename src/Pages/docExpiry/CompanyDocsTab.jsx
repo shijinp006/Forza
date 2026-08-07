@@ -1,6 +1,10 @@
 import { useState } from "react";
-import { Search, LayoutGrid, Building2, CreditCard, Shield } from "lucide-react";
+import { Search } from "lucide-react";
 import { PaginationFooter } from "./PaginationFooter";
+import CommercialIcon from "../../assets/Commercial.svg?react";
+import MainTradeIcon from "../../assets/MainTrade.svg?react";
+import OfficeLeesIcon from "../../assets/OfficeLees.svg?react";
+import ChamberIcon from "../../assets/Chamber.svg?react";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 
@@ -22,6 +26,23 @@ export const CompanyDocsTab = ({ companyDocs }) => {
     const compStartIndex = (currentCompanyPage - 1) * companyItemsPerPage;
     const compEndIndex = Math.min(compStartIndex + companyItemsPerPage, filteredCompanyDocs.length);
     const paginatedCompanyDocs = filteredCompanyDocs.slice(compStartIndex, compEndIndex);
+
+    const getDocIcon = (doc) => {
+        const name = doc.name.toLowerCase();
+        if (name.includes("commercial") || name.includes("fleet") || name.includes("insurance")) {
+            return <CommercialIcon className="w-4 h-4 text-[#5949BE]" />;
+        }
+        if (name.includes("trade") || name.includes("license") || name.includes("main")) {
+            return <MainTradeIcon className="w-4 h-4 text-[#5949BE]" />;
+        }
+        if (name.includes("lease") || name.includes("office")) {
+            return <OfficeLeesIcon className="w-4 h-4 text-[#5949BE]" />;
+        }
+        if (name.includes("chamber") || name.includes("commerce")) {
+            return <ChamberIcon className="w-4 h-4 text-[#5949BE]" />;
+        }
+        return <MainTradeIcon className="w-4 h-4 text-[#5949BE]" />;
+    };
 
     return (
         <div className="px-4 sm:px-6 pb-8">
@@ -66,16 +87,8 @@ export const CompanyDocsTab = ({ companyDocs }) => {
                                     <tr key={idx} className="border-b border-gray-50 hover:bg-violet-50/40 transition-colors">
                                         <td className="px-5 py-3.5">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-8.5 h-8.5 rounded-xl bg-[#E5E9F8] text-[#5949BE] flex items-center justify-center shrink-0 shadow-2xs">
-                                                    {doc.iconType === "building" ? (
-                                                        <Building2 size={17} />
-                                                    ) : doc.iconType === "card" ? (
-                                                        <CreditCard size={17} />
-                                                    ) : doc.iconType === "shield" ? (
-                                                        <Shield size={17} />
-                                                    ) : (
-                                                        <LayoutGrid size={17} />
-                                                    )}
+                                                <div className="w-8.5 h-8.5 rounded-xl bg-[#E5E9F8] flex items-center justify-center shrink-0 shadow-2xs">
+                                                    {getDocIcon(doc)}
                                                 </div>
                                                 <div>
                                                     <p style={{ ...inter, fontWeight: 600, fontSize: "13px" }} className="text-slate-800">

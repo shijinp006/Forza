@@ -1,4 +1,5 @@
 import { terminals, liveInvoices } from "../../data/posData";
+import BluecolorDIcon from "../../assets/BluecolorD.svg?react";
 
 const inter = { fontFamily: "Inter, sans-serif, Manrope" };
 
@@ -25,10 +26,10 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
         <div
             style={{
                 width: "100%",
-                height: isAllCounters ? "790px" : "520px",
-                maxHeight: isAllCounters ? "798px" : "520px",
+                height: isAllCounters ? "820px" : "520px",
+                maxHeight: isAllCounters ? "820px" : "520px",
                 borderRadius: "12px",
-                border: "1px solid #C5BCF2",
+                border: "1px solid #E0E3E5",
                 backgroundColor: "#FFFFFF",
                 display: "flex",
                 flexDirection: "column",
@@ -51,7 +52,6 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
 
             {/* Scrollable list */}
             <div
-                data-lenis-prevent
                 style={{
                     flex: 1,
                     overflowY: "auto",
@@ -138,10 +138,16 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
                                             ...inter,
                                             fontWeight: 700,
                                             fontSize: "13px",
-                                            color: t.isOnline ? "#6655D8" : "#CBD5E1",
+                                            color: t.isOnline ? "#0053DB" : "#CBD5E1",
                                         }}
+                                        className="inline-flex items-center gap-1"
                                     >
-                                        Đ {t.amount}
+                                        {t.isOnline ? (
+                                            <BluecolorDIcon className="w-4 h-4 shrink-0" />
+                                        ) : (
+                                            <BluecolorDIcon className="w-4 h-4 shrink-0 opacity-40 grayscale" />
+                                        )}
+                                        {t.amount}
                                     </span>
                                 </div>
                             </div>
@@ -191,8 +197,9 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
                                         <span style={{ ...inter, fontWeight: 700, fontSize: "11px" }} className="text-[#22C55E] tracking-wider">
                                             {inv.method}
                                         </span>
-                                        <span style={{ ...inter, fontWeight: 800, fontSize: "14px" }} className="text-[#2563EB]">
-                                            Đ {inv.amount}
+                                        <span style={{ ...inter, fontWeight: 800, fontSize: "14px" }} className="text-[#0053DB] inline-flex items-center gap-0.5">
+                                            <BluecolorDIcon className="w-4 h-4 shrink-0" />
+                                            {inv.amount}
                                         </span>
                                     </div>
                                 </div>

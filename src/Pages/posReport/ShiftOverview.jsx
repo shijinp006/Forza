@@ -1,4 +1,5 @@
 import { shiftData, collectionDistribution, counterDetailsData } from "../../data/posData";
+import DIcon from "../../assets/D.svg?react";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 
@@ -15,7 +16,7 @@ export function ShiftOverview({ counter }) {
     const { employee } = currentShiftData;
 
     return (
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-4 sm:p-6 border border-gray-100 shadow-sm flex flex-col gap-4 h-auto md:h-[520px]">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-4 sm:p-6 border border-gray-100 shadow-sm flex flex-col gap-4 h-auto md:h-[520px] overflow-y-auto">
 
             {/* ── Top Row: Title + Denomination + Status ── */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between shrink-0 gap-2">
@@ -39,7 +40,7 @@ export function ShiftOverview({ counter }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 h-full overflow-hidden">
 
                 {/* ── Left Panel: Employee info & shift details ── */}
-                <div className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-5 flex flex-col justify-between h-full shadow-2xs">
+                <div className="bg-white rounded-2xl border border-[#C6C6CD] p-4 sm:p-5 flex flex-col justify-between h-full shadow-2xs">
                     {/* Employee info */}
                     <div className="flex items-center gap-3 pb-3 border-b border-gray-100">
                         <div
@@ -60,73 +61,76 @@ export function ShiftOverview({ counter }) {
 
                     {/* Shift metrics rows */}
                     <div className="flex flex-col justify-between flex-1 pt-3">
-                        <div className="flex items-center justify-between">
-                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-slate-400">
+                        <div className="flex items-center justify-between pb-2 border-b border-[#E0E3E5]">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "14.5px" }} className="text-[#566166]">
                                 Log in
                             </span>
-                            <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-slate-800">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "14.5px" }} className="text-[#000000]">
                                 {currentShiftData.logIn}
                             </span>
                         </div>
 
-                        <div className="flex items-center justify-between pb-2 border-b border-gray-100">
-                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-slate-400">
+                        <div className="flex items-center justify-between pb-2 border-b border-[#E0E3E5]">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "14.5px" }} className="text-[#566166]">
                                 Log out
                             </span>
-                            <span style={{ ...inter, fontWeight: 500, fontSize: "12.5px" }} className="text-slate-400">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "14.5px" }} className="text-[#000000]">
                                 {currentShiftData.logOut}
                             </span>
                         </div>
 
                         <div className="flex items-center justify-between">
-                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-slate-400">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-[#566166]">
                                 VOID Bills
                             </span>
-                            <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-slate-800">
+                            <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-[#2B2F34]">
                                 {currentShiftData.voidBills}
                             </span>
                         </div>
 
                         <div className="flex items-center justify-between">
-                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-slate-400">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-[#566166]">
                                 Hold Bills
                             </span>
-                            <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-slate-800">
+                            <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-[#2B2F34]">
                                 {currentShiftData.holdBills}
                             </span>
                         </div>
 
                         <div className="flex items-center justify-between">
-                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-slate-400">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-[#566166]">
                                 Cash in Hand
                             </span>
-                            <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-slate-700">
-                                Đ {currentShiftData.cashInHand}
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-[#2B2F34] inline-flex items-center gap-1">
+                                <DIcon className="w-3.5 h-3.5 text-slate-700 shrink-0" />
+                                {currentShiftData.cashInHand}
                             </span>
                         </div>
 
                         <div className="flex items-center justify-between">
-                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-slate-400">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-[#566166]">
                                 Total Collection
                             </span>
-                            <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-slate-700">
-                                Đ {currentShiftData.totalCollection}
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-[#2B2F34] inline-flex items-center gap-1">
+                                <DIcon className="w-3.5 h-3.5 text-slate-700 shrink-0" />
+                                {currentShiftData.totalCollection}
                             </span>
                         </div>
 
                         <div className="flex items-center justify-between">
-                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-slate-400">
+                            <span style={{ ...inter, fontWeight: 400, fontSize: "12.5px" }} className="text-[#566166]">
                                 Total Sale
                             </span>
-                            <span style={{ ...inter, fontWeight: 700, fontSize: "13.5px" }} className="text-slate-900">
-                                Đ {currentShiftData.totalSale}
+                            <span style={{ ...inter, fontWeight: 600, fontSize: "13.5px" }} className="text-[#2B2F34] inline-flex items-center gap-1">
+                                <DIcon className="w-3.5 h-3.5 text-slate-900 shrink-0" />
+                                {currentShiftData.totalSale}
                             </span>
                         </div>
                     </div>
                 </div>
 
                 {/* ── Right Panel: Collection Distribution Donut ── */}
-                <div className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-5 flex flex-col justify-between items-center h-full shadow-2xs">
+                <div className="bg-white rounded-2xl border border-[#C6C6CD] p-4 sm:p-5 flex flex-col justify-between items-center h-full shadow-2xs ">
                     <h3 style={{ ...inter, fontWeight: 700, fontSize: "12.5px" }} className="text-slate-800 self-start">
                         Collection Distribution
                     </h3>
@@ -151,11 +155,12 @@ export function ShiftOverview({ counter }) {
 
                         {/* Donut Center */}
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                            <span style={{ ...inter, fontSize: "9.5px", fontWeight: 400 }} className="text-slate-400">
+                            <span style={{ ...inter, fontSize: "12.5px", fontWeight: 400 }} className="text-[#585C62]">
                                 Total Collected
                             </span>
-                            <span style={{ ...inter, fontSize: "12px", fontWeight: 700 }} className="text-slate-800 mt-0.5">
-                                Đ 5608.00
+                            <span style={{ ...inter, fontSize: "16px", fontWeight: 700 }} className="text-slate-800 mt-0.5 inline-flex items-center gap-1">
+                                <DIcon className="w-4 h-4 text-slate-800 shrink-0" />
+                                <span>5608.00</span>
                             </span>
                         </div>
                     </div>
@@ -169,12 +174,13 @@ export function ShiftOverview({ counter }) {
                                         className="w-2.5 h-2.5 rounded-full shrink-0"
                                         style={{ backgroundColor: item.color }}
                                     />
-                                    <span style={{ ...inter, fontSize: "11.5px", fontWeight: 400 }} className="text-slate-500">
+                                    <span style={{ ...inter, fontSize: "12.5px", fontWeight: 400 }} className="text-[#515F73]">
                                         {item.label}
                                     </span>
                                 </div>
-                                <span style={{ ...inter, fontSize: "11.5px", fontWeight: 600 }} className="text-slate-700">
-                                    Đ {item.amount}
+                                <span style={{ ...inter, fontSize: "12.5px", fontWeight: 400 }} className="text-[#2B2F34] inline-flex items-center gap-0.5">
+                                    <DIcon className="w-3.5 h-3.5 text-[#2B2F34] shrink-0" />
+                                    <span>{item.amount}</span>
                                 </span>
                             </div>
                         ))}

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search } from "lucide-react";
 import { Avatar, EmployeeDetailPanel } from "./EmployeeDetailPanel";
 import { PaginationFooter } from "./PaginationFooter";
 import { FilterSelect } from "./FilterSelect";
 import { departmentOptions, expiryTypeOptions } from "../../data/docExpiryData";
+import SortIcon from "../../assets/Sort.svg?react";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 
@@ -94,7 +95,7 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                         {/* Desktop spacer to push filter button to the far right end */}
                         <div className="hidden sm:block flex-1" />
 
-                        {/* Sliders Filter Icon Button */}
+                        {/* Filter Icon Button using Sort.svg */}
                         <button
                             onClick={() => {
                                 setSearchTerm("");
@@ -103,9 +104,9 @@ export const EmployeesTab = ({ employees, selectedEmployee, setSelectedEmployee 
                                 setEmpPage(1);
                             }}
                             title="Reset Filters"
-                            className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-white border border-gray-200/90 shadow-2xs flex items-center justify-center text-slate-500 hover:text-violet-600 hover:bg-slate-50 transition cursor-pointer shrink-0"
+                            className="w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer shrink-0 hover:opacity-80 transition"
                         >
-                            <SlidersHorizontal size={14} />
+                            <SortIcon className="w-8 h-8" />
                         </button>
                     </div>
                 </div>

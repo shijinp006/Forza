@@ -1,5 +1,7 @@
 import { MoreHorizontal } from "lucide-react";
+import { useState } from "react";
 import { barData, collectionDistribution, cashiers } from "../../data/posData";
+import DIcon from "../../assets/D.svg?react";
 
 const poppins = { fontFamily: "Poppins, sans-serif" };
 const inter = { fontFamily: "Inter, sans-serif" };
@@ -192,8 +194,9 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
                             <span style={{ ...inter, fontWeight: 500, fontSize: "10.5px" }} className="text-slate-400 leading-tight">
                                 Total Collected
                             </span>
-                            <span style={{ ...poppins, fontWeight: 700, fontSize: "13.5px" }} className="text-slate-900 leading-tight mt-1">
-                                <span className="font-sans font-semibold text-slate-800">Đ </span>51212608.00
+                            <span style={{ ...poppins, fontWeight: 700, fontSize: "13.5px" }} className="text-slate-900 leading-tight mt-1 flex items-center justify-center gap-1">
+                                <DIcon className="w-3.5 h-3.5 text-slate-900 shrink-0" />
+                                <span>51212608.00</span>
                             </span>
                         </div>
                     </div>

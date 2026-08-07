@@ -1,4 +1,6 @@
-import { ArrowLeft, Mail, Phone, CreditCard, FileText } from "lucide-react";
+import { ArrowLeft, CreditCard, FileText } from "lucide-react";
+import WorkEmailIcon from "../../assets/WorkEmail.svg?react";
+import PhoneIcon from "../../assets/Phone.svg?react";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 
@@ -23,7 +25,7 @@ export const EmployeeDetailPanel = ({ emp, onClose }) => {
     return (
         /* Outer Wrapper: Fixed Centered Overlay on Mobile, Inline Block on Desktop */
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 md:static md:z-auto md:bg-transparent md:backdrop-blur-none md:p-0 md:block shrink-0">
-            {/* Panel Card: Centered on Mobile (max-w-[340px] max-h-[85vh]), Original Side Panel on Desktop (w-[310px] lg:w-[330px] h-full) */}
+            {/* Panel Card */}
             <div
                 style={{ ...inter, scrollbarWidth: "thin", scrollbarColor: "#c4b5fd transparent" }}
                 className="w-full max-w-[340px] max-h-[85vh] bg-[#F5F2FE] rounded-[22px] border border-violet-200/80 shadow-2xl p-4 flex flex-col overflow-y-auto mx-auto md:w-[310px] lg:w-[330px] md:max-w-none md:h-full md:max-h-none md:rounded-[20px] md:shadow-xs md:mx-0 md:p-3.5"
@@ -48,7 +50,7 @@ export const EmployeeDetailPanel = ({ emp, onClose }) => {
                     <button
                         onClick={onClose}
                         aria-label="Close detail panel"
-                        className="w-7 h-7 rounded-full bg-rose-500/20 text-rose-500 flex items-center justify-center hover:bg-rose-500 hover:text-white transition shadow-xs cursor-pointer shrink-0"
+                        className="w-7 h-7 rounded-full bg-rose-500/20 text-rose-600 flex items-center justify-center hover:bg-rose-500 hover:text-white transition shadow-xs cursor-pointer shrink-0"
                     >
                         <ArrowLeft size={15} strokeWidth={2.2} />
                     </button>
@@ -63,8 +65,8 @@ export const EmployeeDetailPanel = ({ emp, onClose }) => {
                     </h3>
                     <div className="bg-white rounded-xl p-2.5 border border-violet-100/60 shadow-xs space-y-2">
                         <div className="flex items-center gap-2.5">
-                            <div className="w-6 h-6 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center shrink-0">
-                                <Mail size={13} />
+                            <div className="w-6 h-6 rounded-lg bg-violet-50 flex items-center justify-center shrink-0">
+                                <WorkEmailIcon className="w-4 h-4 text-violet-600" />
                             </div>
                             <div className="min-w-0">
                                 <p style={{ fontWeight: 500, fontSize: "10px" }} className="text-slate-400">Work Email</p>
@@ -74,8 +76,8 @@ export const EmployeeDetailPanel = ({ emp, onClose }) => {
                             </div>
                         </div>
                         <div className="flex items-center gap-2.5">
-                            <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                                <Phone size={13} />
+                            <div className="w-6 h-6 rounded-lg bg-emerald-50 flex items-center justify-center shrink-0">
+                                <PhoneIcon className="w-4 h-4 text-emerald-600" />
                             </div>
                             <div>
                                 <p style={{ fontWeight: 500, fontSize: "10px" }} className="text-slate-400">Mobile</p>

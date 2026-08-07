@@ -7,6 +7,11 @@ import { VehiclesTab } from "../Pages/docExpiry/VehiclesTab";
 import { CompanyDocsTab } from "../Pages/docExpiry/CompanyDocsTab";
 import { OtherTab } from "../Pages/docExpiry/OtherTab";
 
+import EmployeesIcon from "../assets/Employees.svg?react";
+import VehicleIcon from "../assets/Vehicle.svg?react";
+import CompanyIcon from "../assets/Company.svg?react";
+import OtherIcon from "../assets/Other.svg?react";
+
 const inter = { fontFamily: "Inter, sans-serif" };
 
 export const DocExpiry = () => {
@@ -55,11 +60,24 @@ export const DocExpiry = () => {
 
     const dynamicStats = stats.map((s) => {
         let val = s.value;
-        if (s.label === "Employees") val = String(filteredEmployees.length).padStart(2, "0");
-        if (s.label === "Vehicles") val = String(filteredVehicles.length).padStart(2, "0");
-        if (s.label === "Company") val = String(filteredCompanyDocs.length).padStart(2, "0");
-        if (s.label === "Other") val = String(filteredActionItems.length).padStart(2, "0");
-        return { ...s, value: val };
+        let svgIcon = null;
+        if (s.label === "Employees") {
+            val = String(filteredEmployees.length).padStart(2, "0");
+            svgIcon = EmployeesIcon;
+        }
+        if (s.label === "Vehicles") {
+            val = String(filteredVehicles.length).padStart(2, "0");
+            svgIcon = VehicleIcon;
+        }
+        if (s.label === "Company") {
+            val = String(filteredCompanyDocs.length).padStart(2, "0");
+            svgIcon = CompanyIcon;
+        }
+        if (s.label === "Other") {
+            val = String(filteredActionItems.length).padStart(2, "0");
+            svgIcon = OtherIcon;
+        }
+        return { ...s, value: val, svgIcon };
     });
 
     return (

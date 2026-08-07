@@ -4,6 +4,8 @@ const inter = { fontFamily: "Inter, sans-serif" };
 
 export const StatCard = ({ stat, isActive, onClick }) => {
     const Icon = stat.icon;
+    const SvgIcon = stat.svgIcon;
+
     return (
         <div
             onClick={onClick}
@@ -17,8 +19,12 @@ export const StatCard = ({ stat, isActive, onClick }) => {
                 <span style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="text-gray-500">
                     {stat.label}
                 </span>
-                <div className={`w-7 h-7 rounded-lg ${stat.iconBg} flex items-center justify-center`}>
-                    <Icon size={15} className={stat.iconColor} />
+                <div className={`w-8 h-8 rounded-xl ${stat.iconBg} flex items-center justify-center shrink-0`}>
+                    {SvgIcon ? (
+                        <SvgIcon className="w-5 h-5" />
+                    ) : Icon ? (
+                        <Icon size={18} className={stat.iconColor} />
+                    ) : null}
                 </div>
             </div>
             <div>

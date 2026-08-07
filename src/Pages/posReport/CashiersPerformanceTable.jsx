@@ -1,5 +1,6 @@
-import { Gauge } from "lucide-react";
 import { cashiers } from "../../data/posData";
+import DIcon from "../../assets/D.svg?react";
+import CashierIcon from "../../assets/Cashier.svg?react";
 
 const poppins = { fontFamily: "Poppins, sans-serif" };
 const inter = { fontFamily: "Inter, sans-serif" };
@@ -21,9 +22,7 @@ export function CashiersPerformanceTable({ viewType, setViewType }) {
                         <h3 style={{ ...poppins, fontWeight: 600, fontSize: "14px" }} className="text-slate-900 tracking-tight">
                             Top Performing Cashiers
                         </h3>
-                        <span className="inline-flex items-center justify-center w-6 h-6 rounded-lg border border-slate-300/80 bg-white/60 text-slate-700 shadow-2xs">
-                            <Gauge size={13} strokeWidth={2} />
-                        </span>
+                        <CashierIcon className="w-5 h-5 shrink-0" />
                     </div>
 
                     {/* Amount / QTY Pill Toggle */}
@@ -55,7 +54,7 @@ export function CashiersPerformanceTable({ viewType, setViewType }) {
                 <div className="p-4 sm:p-5 bg-white">
 
                     {/* Table */}
-                    <div data-lenis-prevent className="overflow-auto max-h-[300px]" style={{ scrollbarWidth: "thin" }}>
+                    <div className="overflow-auto max-h-[300px]" style={{ scrollbarWidth: "thin" }}>
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className=" text-[10.5px] text-slate-400 font-semibold tracking-wider">
@@ -83,7 +82,10 @@ export function CashiersPerformanceTable({ viewType, setViewType }) {
                                             {item.invoices}
                                         </td>
                                         <td style={{ ...poppins, fontWeight: 700, fontSize: "12.5px" }} className="py-3 px-3 text-slate-900">
-                                            {item.sales}
+                                            <span className="inline-flex items-center gap-1">
+                                                <DIcon className="w-3.5 h-3.5 text-slate-900 shrink-0" />
+                                                {item.sales}
+                                            </span>
                                         </td>
                                         <td style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="py-3 px-3 text-right text-slate-700">
                                             {item.qty}

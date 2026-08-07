@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Calendar as CalendarIcon, SlidersHorizontal, ChevronDown, Check, Menu } from "lucide-react";
+import { Check, Menu } from "lucide-react";
+import CallenderIcon from "../../assets/Callender.svg?react";
+import Sort2Icon from "../../assets/Sort2.svg?react";
 
 const inter = { fontFamily: "Inter, sans-serif" };
 
@@ -19,17 +21,8 @@ export const TopBarHeader = ({ dateFilter, setDateFilter }) => {
             }}
         >
             <div className="flex items-center justify-between px-5 py-3">
-                {/* Left side: Filter Sliders Button + Logo */}
+                {/* Left side: Logo / Title */}
                 <div className="flex items-center gap-2.5">
-                    {/* Sliders Filter Button — hidden in desktop view */}
-                    <button
-                        type="button"
-                        onClick={() => setIsDateMenuOpen(!isDateMenuOpen)}
-                        className="hidden p-1.5 rounded-lg bg-white/20 border border-white/30 text-white hover:bg-white/30 transition cursor-pointer"
-                        title="Filter Options"
-                    >
-                        <SlidersHorizontal size={14} />
-                    </button>
                     <span style={{ ...inter, fontWeight: 600, fontSize: "15px" }} className="text-white">
                         Alfuttaim
                     </span>
@@ -41,11 +34,11 @@ export const TopBarHeader = ({ dateFilter, setDateFilter }) => {
                         <button
                             type="button"
                             onClick={() => setIsDateMenuOpen(!isDateMenuOpen)}
-                            className="flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg border border-white/30 hover:bg-white/30 transition cursor-pointer"
+                            className="flex items-center gap-2 bg-white text-slate-800 px-3 py-1.5 rounded-xl border border-white/30 hover:bg-slate-100 transition cursor-pointer shadow-xs"
                         >
-                            <CalendarIcon size={14} />
+                            <CallenderIcon className="w-4 h-4 text-slate-700" />
                             <span style={{ ...inter, fontWeight: 500, fontSize: "13px" }}>{dateFilter}</span>
-                            <ChevronDown size={13} />
+                            <Sort2Icon className="w-3.5 h-3.5 text-slate-500" />
                         </button>
 
                         {isDateMenuOpen && (
