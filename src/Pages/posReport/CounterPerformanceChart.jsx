@@ -201,32 +201,41 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
 
                     {/* Donut SVG */}
                     <div className="relative w-full h-56 flex items-center justify-center">
-                        <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+                        <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+                            <defs>
+                                <filter id="donut3d-shadow-chart" x="-30%" y="-30%" width="160%" height="160%">
+                                    <feDropShadow dx="0" dy="2.5" stdDeviation="2" floodColor="#0F172A" floodOpacity="0.22" />
+                                </filter>
+                            </defs>
+
+                            {/* Track Circle */}
                             <circle cx="50" cy="50" r="38" stroke="#F1F5F9" strokeWidth="13" fill="transparent" />
-                            {(() => {
-                                const C = 2 * Math.PI * 38;
-                                let accumOffset = 0;
-                                return collectionDistribution.map((item) => {
-                                    const p = Number(item.percentage) || 0;
-                                    const color = item.color || getTypeColor(item.type, p);
-                                    const dashLength = Math.max(0, (p / 100) * C - (p > 0 ? 4 : 0));
-                                    const gapLength = C - dashLength;
-                                    const offset = accumOffset;
-                                    accumOffset -= (p / 100) * C;
-                                    return (
-                                        <circle
-                                            key={item.type}
-                                            cx="50" cy="50" r="38"
-                                            stroke={color}
-                                            strokeWidth="13"
-                                            fill="transparent"
-                                            strokeDasharray={`${dashLength.toFixed(1)} ${gapLength.toFixed(1)}`}
-                                            strokeDashoffset={offset.toFixed(1)}
-                                            strokeLinecap="round"
-                                        />
-                                    );
-                                });
-                            })()}
+                            {/* Rotated 3D Donut Slices */}
+                            <g transform="rotate(-90 50 50)" filter="url(#donut3d-shadow-chart)">
+                                {(() => {
+                                    const C = 2 * Math.PI * 38;
+                                    let accumOffset = 0;
+                                    return collectionDistribution.map((item) => {
+                                        const p = Number(item.percentage) || 0;
+                                        const color = item.color || getTypeColor(item.type, p);
+                                        const dashLength = Math.max(0, (p / 100) * C - (p > 0 ? 1.5 : 0));
+                                        const gapLength = C - dashLength;
+                                        const offset = accumOffset;
+                                        accumOffset -= (p / 100) * C;
+                                        return (
+                                            <circle
+                                                key={item.type}
+                                                cx="50" cy="50" r="38"
+                                                stroke={color}
+                                                strokeWidth="13"
+                                                fill="transparent"
+                                                strokeDasharray={`${dashLength.toFixed(1)} ${gapLength.toFixed(1)}`}
+                                                strokeDashoffset={offset.toFixed(1)}
+                                            />
+                                        );
+                                    });
+                                })()}
+                            </g>
                         </svg>
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
                             <span style={{ ...inter, fontWeight: 500, fontSize: "10.5px" }} className="text-slate-400 leading-tight">

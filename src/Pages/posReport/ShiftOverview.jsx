@@ -152,32 +152,41 @@ export function ShiftOverview({ counter }) {
 
                     {/* Donut Chart */}
                     <div className="relative w-48 h-48 sm:w-52 sm:h-52 my-auto flex items-center justify-center">
-                        <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
+                        <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+                            <defs>
+                                <filter id="donut3d-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                                    <feDropShadow dx="0" dy="2.5" stdDeviation="2" floodColor="#0F172A" floodOpacity="0.22" />
+                                </filter>
+                            </defs>
+
+                            {/* Track Circle */}
                             <circle cx="50" cy="50" r="38" stroke="#F1F5F9" strokeWidth="13" fill="transparent" />
-                            {(() => {
-                                const C = 2 * Math.PI * 38;
-                                let accumOffset = 0;
-                                return collectionDistribution.map((item) => {
-                                    const p = Number(item.percentage) || 0;
-                                    const color = item.color || getTypeColor(item.type, p);
-                                    const dashLength = Math.max(0, (p / 100) * C - (p > 0 ? 4 : 0));
-                                    const gapLength = C - dashLength;
-                                    const offset = accumOffset;
-                                    accumOffset -= (p / 100) * C;
-                                    return (
-                                        <circle
-                                            key={item.type}
-                                            cx="50" cy="50" r="38"
-                                            stroke={color}
-                                            strokeWidth="13"
-                                            fill="transparent"
-                                            strokeDasharray={`${dashLength.toFixed(1)} ${gapLength.toFixed(1)}`}
-                                            strokeDashoffset={offset.toFixed(1)}
-                                            strokeLinecap="round"
-                                        />
-                                    );
-                                });
-                            })()}
+                            {/* Rotated 3D Donut Slices */}
+                            <g transform="rotate(-90 50 50)" filter="url(#donut3d-shadow)">
+                                {(() => {
+                                    const C = 2 * Math.PI * 38;
+                                    let accumOffset = 0;
+                                    return collectionDistribution.map((item) => {
+                                        const p = Number(item.percentage) || 0;
+                                        const color = item.color || getTypeColor(item.type, p);
+                                        const dashLength = Math.max(0, (p / 100) * C - (p > 0 ? 1.5 : 0));
+                                        const gapLength = C - dashLength;
+                                        const offset = accumOffset;
+                                        accumOffset -= (p / 100) * C;
+                                        return (
+                                            <circle
+                                                key={item.type}
+                                                cx="50" cy="50" r="38"
+                                                stroke={color}
+                                                strokeWidth="13"
+                                                fill="transparent"
+                                                strokeDasharray={`${dashLength.toFixed(1)} ${gapLength.toFixed(1)}`}
+                                                strokeDashoffset={offset.toFixed(1)}
+                                            />
+                                        );
+                                    });
+                                })()}
+                            </g>
                         </svg>
 
                         {/* Donut Center */}
