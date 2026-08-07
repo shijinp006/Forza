@@ -65,7 +65,7 @@ export const DocExpiry = () => {
     return (
         <div
             style={inter}
-            className="min-h-screen flex flex-col bg-[#EDEAFB] pb-8"
+            className="min-h-screen flex flex-col bg-[#F7F9FB] pb-8"
         >
             {/* ── TOP BAR HEADER ── */}
             <TopBarHeader dateFilter={dateFilter} setDateFilter={setDateFilter} />

@@ -37,7 +37,7 @@ export const POSReport = () => {
     };
 
     return (
-        <div style={inter} className="min-h-screen bg-[#EDEAFB] flex flex-col pb-8">
+        <div style={inter} className="min-h-screen bg-[#F7F9FB] flex flex-col pb-8">
 
             {/* ── TOP BAR HEADER ── */}
             <TopBarHeader dateFilter={dateFilter} setDateFilter={setDateFilter} />
