@@ -28,18 +28,6 @@ export const OtherTab = ({ actionItems }) => {
                         <h2 style={{ ...inter, fontWeight: 700, fontSize: "15px" }} className="text-[#2B2F34]">
                             Upcoming Action Items
                         </h2>
-                        {selectedDay !== null && (
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-violet-100 text-violet-700 text-xs font-semibold">
-                                Oct {selectedDay}, 2026
-                                <button
-                                    onClick={() => setSelectedDay(null)}
-                                    className="p-0.5 hover:bg-violet-200 rounded-full transition cursor-pointer"
-                                    title="Clear filter"
-                                >
-                                    <X size={12} />
-                                </button>
-                            </span>
-                        )}
                     </div>
                     {selectedDay !== null ? (
                         <button

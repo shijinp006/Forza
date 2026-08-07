@@ -70,8 +70,27 @@ export const CalendarWidget = ({
 
     return (
         <div style={inter} className="w-full sm:w-[300px] lg:w-[320px] lg:h-[500px] shrink-0 bg-white rounded-2xl border border-gray-100 shadow-xs p-4 sm:p-5 flex flex-col">
-            {/* Calendar Section */}
-            <div className="block pb-4 border-b border-gray-100 md:border-b-0 md:pb-0">
+            {/* Mobile View Calendar Toggle Button */}
+            <div className="md:hidden">
+                <button
+                    type="button"
+                    onClick={() => setShowMobileCalendar(!showMobileCalendar)}
+                    className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-violet-50 text-violet-700 hover:bg-violet-100 transition cursor-pointer border border-violet-100/80 shadow-2xs"
+                >
+                    <div className="flex items-center gap-2">
+                        <CalendarIcon size={16} className="text-violet-600" />
+                        <span style={{ fontWeight: 600, fontSize: "13px" }}>
+                            {selectedDay ? `Oct ${selectedDay}, 2026` : "Calendar"}
+                        </span>
+                    </div>
+                    <div className="flex items-center gap-1 text-violet-600">
+                        {showMobileCalendar ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    </div>
+                </button>
+            </div>
+
+            {/* Calendar Section (Collapsible on Mobile, Always Visible on Desktop) */}
+            <div className={`${showMobileCalendar ? "block mt-3 pt-3 border-t border-gray-100" : "hidden"} md:block pb-4 border-b border-gray-100 md:border-b-0 md:pb-0`}>
                 <div className="flex items-center justify-between mb-4">
                     <span style={{ fontWeight: 600, fontSize: "14px" }} className="text-slate-800">
                         {monthNames[month]} {year}
@@ -111,6 +130,7 @@ export const CalendarWidget = ({
                                 onClick={() => {
                                     if (item.isCurr) {
                                         setSelectedDay(isSelected ? null : item.day);
+                                        setShowMobileCalendar(false);
                                     }
                                 }}
                                 disabled={!item.isCurr}
