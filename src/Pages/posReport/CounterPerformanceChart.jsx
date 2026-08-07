@@ -60,10 +60,10 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
             </div>
 
             {/* Flex content: Bar Chart + Donut Chart — stacked on mobile/tablet, row on desktop */}
-            <div className="flex flex-col xl:flex-row items-center xl:items-start justify-between gap-6 pt-2">
+            <div className="flex flex-col xl:flex-row items-center xl:items-stretch justify-between gap-6 pt-2 ">
 
                 {/* ── BAR CHART ── */}
-                <div className="flex-1 w-full flex items-start gap-3 overflow-x-auto min-w-0" style={{ scrollbarWidth: "none" }}>
+                <div className="flex-1 w-full flex items-start gap-3 overflow-x-auto min-w-0 lg:mt-6" style={{ scrollbarWidth: "none" }}>
 
                     {/* Y-axis labels — starts from top, spans full column height */}
                     <div
@@ -194,7 +194,7 @@ export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewTy
                 </div>
 
                 {/* ── COLLECTION DISTRIBUTION DONUT ── */}
-                <div className="w-full sm:w-[330px] bg-white border border-[#E0E3E5] shadow-[0_4px_20px_rgba(0,0,0,0.04)] rounded-2xl p-5 flex flex-col items-center shrink-0">
+                <div className="w-full sm:w-[330px]  min-h-[350px] bg-white border border-[#E0E3E5] shadow-[0_4px_20px_rgba(0,0,0,0.04)] rounded-2xl p-5 flex flex-col items-center justify-between shrink-0">
                     <h3 style={{ ...poppins, fontWeight: 700, fontSize: "14px" }} className="text-slate-900 self-start mb-2">
                         Collection Distribution
                     </h3>
