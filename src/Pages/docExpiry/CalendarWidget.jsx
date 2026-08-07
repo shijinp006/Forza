@@ -39,6 +39,7 @@ export const CalendarWidget = ({
     const getItemDay = (item) => {
         if (item.day) return item.day;
         if (item.date === "Today") return 12;
+        if (item.date === "Yesterday") return 11;
         const match = item.date?.match(/Oct\s+(\d+)/i);
         return match ? parseInt(match[1], 10) : null;
     };

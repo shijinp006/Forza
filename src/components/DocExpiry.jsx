@@ -23,21 +23,28 @@ export const DocExpiry = () => {
         const getDays = (item) => {
             if (typeof item.days === "number") return item.days;
             if (item.daysLeft) {
+                if (item.daysLeft.includes("0") || item.daysLeft.toLowerCase().includes("today")) return 0;
+                if (item.daysLeft.toLowerCase().includes("overdue") || item.daysLeft.toLowerCase().includes("yesterday")) return -1;
                 const match = item.daysLeft.match(/(\d+)/);
                 if (match) return parseInt(match[1], 10);
             }
             if (item.status) {
-                if (item.status.includes("Today")) return 0;
+                if (item.status.toLowerCase().includes("today")) return 0;
+                if (item.status.toLowerCase().includes("yesterday")) return -1;
                 const match = item.status.match(/(\d+)/);
                 if (match) return parseInt(match[1], 10);
+            }
+            if (item.date) {
+                if (item.date.toLowerCase() === "today") return 0;
+                if (item.date.toLowerCase() === "yesterday") return -1;
             }
             return 15;
         };
 
-        if (filter === "Today") return list.filter((item) => getDays(item) <= 2);
-        if (filter === "Yesterday") return list.filter((item) => getDays(item) <= 5);
-        if (filter === "Last 7 Days") return list.filter((item) => getDays(item) <= 7);
-        if (filter === "Last 30 Days" || filter === "This Month") return list.filter((item) => getDays(item) <= 30);
+        if (filter === "Today") return list.filter((item) => getDays(item) === 0);
+        if (filter === "Yesterday") return list.filter((item) => getDays(item) === -1);
+        if (filter === "Last 7 Days") return list.filter((item) => getDays(item) >= -1 && getDays(item) <= 7);
+        if (filter === "Last 30 Days" || filter === "This Month") return list.filter((item) => getDays(item) >= -1 && getDays(item) <= 30);
         return list;
     };
 
