@@ -122,24 +122,119 @@ export function Sidebar() {
         )}
       </AnimatePresence>
 
-      {/* Sidebar panel with Framer Motion layout animation */}
+      {/* ── Mobile Sidebar (only rendered when open) ── */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.aside
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ type: "spring", stiffness: 350, damping: 30 }}
+            style={{ borderRadius: "16px", width: 280 }}
+            className="fixed top-0 left-0 h-screen z-50 flex flex-col overflow-hidden bg-white shadow-[0_2px_24px_rgba(111,87,222,0.10)] border border-gray-100 lg:hidden"
+          >
+            {/* LOGO ROW */}
+            <div className="flex items-center py-5 px-5 justify-between">
+              <div className="flex items-center gap-10">
+                <motion.span
+                  whileHover={{ rotate: 5, scale: 1.05 }}
+                  className="shrink-0 flex items-center cursor-pointer"
+                  style={{ width: 36, height: 36 }}
+                >
+                  <ForzaLogo width={36} height={36} style={{ display: "block" }} />
+                </motion.span>
+                <span className="inline-flex items-center" style={{ height: 24 }}>
+                  <ForzaText height={55} style={{ display: "block" }} />
+                </span>
+              </div>
+              <button
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="p-1 rounded-lg hover:bg-violet-50 text-slate-400 hover:text-violet-600 transition-colors cursor-pointer"
+              >
+                <ChevronLeft size={18} />
+              </button>
+            </div>
+
+            {/* MAIN NAV */}
+            <div
+              className="flex-1 min-h-0 overflow-y-auto mt-4 pb-2 px-5"
+              style={{ scrollbarWidth: "thin", scrollbarColor: "#c4b5fd transparent" }}
+            >
+              <nav className="flex flex-col gap-0.5">
+                {mainMenus.map((item) => (
+                  <MenuItem
+                    key={item.title}
+                    item={item}
+                    isActive={isActive(item)}
+                    onClick={handleMenuClick}
+                    collapsed={false}
+                  />
+                ))}
+              </nav>
+            </div>
+
+            {/* BOTTOM */}
+            <div className="shrink-0">
+              <div className="mx-4 border-t border-gray-200" />
+              <nav className="flex flex-col gap-0.5 mt-3 px-8">
+                {bottomMenus.map((item) => (
+                  <MenuItem
+                    key={item.title}
+                    item={item}
+                    isActive={isActive(item)}
+                    onClick={handleMenuClick}
+                    collapsed={false}
+                  />
+                ))}
+              </nav>
+              <div className="mx-4 mt-3 border-t border-gray-200" />
+              <div className="py-4 px-3">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-center rounded-xl px-2 py-2 gap-3 hover:bg-violet-50 transition-colors cursor-pointer justify-between"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src="https://i.pravatar.cc/80?img=47"
+                      className="h-9 w-9 rounded-full object-cover shrink-0 ring-2 ring-violet-100"
+                      alt="Angel Delulu"
+                    />
+                    <div>
+                      <p
+                        style={{ fontFamily: "Poppins, sans-serif", fontSize: "11px", fontWeight: 400 }}
+                        className="text-slate-400 leading-4"
+                      >
+                        Great to see you!
+                      </p>
+                      <h4
+                        style={{ fontFamily: "Poppins, sans-serif", fontWeight: 600, fontSize: "13px" }}
+                        className="text-slate-700 leading-5"
+                      >
+                        Angel Delulu
+                      </h4>
+                    </div>
+                  </div>
+                  <ChevronRight size={15} className="text-slate-400 shrink-0" />
+                </motion.div>
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
+
+      {/* ── Desktop Sidebar (always rendered, hidden on mobile) ── */}
       <motion.aside
         style={{ borderRadius: "16px" }}
         animate={{
           width: collapsed ? 72 : 280,
         }}
         transition={{ type: "spring", stiffness: 350, damping: 30 }}
-        className={[
-          "fixed lg:relative top-0 left-0 h-screen z-50 flex flex-col overflow-hidden bg-white",
-          "shadow-[0_2px_24px_rgba(111,87,222,0.10)] border border-gray-100",
-          mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0",
-          "transition-transform duration-300 ease-in-out lg:transition-none",
-        ].join(" ")}
+        className="hidden lg:flex relative top-0 left-0 h-screen z-50 flex-col overflow-hidden bg-white shadow-[0_2px_24px_rgba(111,87,222,0.10)] border border-gray-100"
       >
         {/* ─── LOGO ROW ─── */}
         <div className={`flex items-center py-5 px-5 justify-between ${collapsed ? "lg:justify-center lg:px-4" : ""}`}>
           <div className="flex items-center gap-10">
-            {/* Custom F logo from assets */}
             <motion.span
               whileHover={{ rotate: 5, scale: 1.05 }}
               className="shrink-0 flex items-center cursor-pointer"
@@ -147,7 +242,7 @@ export function Sidebar() {
             >
               <ForzaLogo width={36} height={36} style={{ display: "block" }} />
             </motion.span>
-            <span className={`flex items-center ${collapsed ? "hidden lg:hidden max-lg:inline-flex" : "inline-flex"}`} style={{ height: 24 }}>
+            <span className={`flex items-center ${collapsed ? "hidden" : "inline-flex"}`} style={{ height: 24 }}>
               <ForzaText height={55} style={{ display: "block" }} />
             </span>
           </div>
@@ -157,12 +252,9 @@ export function Sidebar() {
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              onClick={() => {
-                if (window.innerWidth < 1024) setMobileOpen(false);
-                else setCollapsed(true);
-              }}
+              onClick={() => setCollapsed(true)}
               aria-label="Collapse sidebar"
-              className="hidden lg:flex p-1 rounded-lg hover:bg-violet-50 text-slate-400 hover:text-violet-600 transition-colors cursor-pointer"
+              className="p-1 rounded-lg hover:bg-violet-50 text-slate-400 hover:text-violet-600 transition-colors cursor-pointer"
             >
               <ChevronLeft size={18} />
             </motion.button>
@@ -172,25 +264,15 @@ export function Sidebar() {
               whileTap={{ scale: 0.9 }}
               onClick={() => setCollapsed(false)}
               aria-label="Expand sidebar"
-              className="hidden lg:flex p-1 rounded-lg hover:bg-violet-50 text-slate-400 hover:text-violet-600 transition-colors cursor-pointer"
+              className="p-1 rounded-lg hover:bg-violet-50 text-slate-400 hover:text-violet-600 transition-colors cursor-pointer"
             >
               <ChevronRight size={18} />
             </motion.button>
           )}
-
-          {/* Close on mobile */}
-          <button
-            onClick={() => setMobileOpen(false)}
-            aria-label="Close menu"
-            className="lg:hidden p-1 rounded-lg hover:bg-violet-50 text-slate-400 hover:text-violet-600 transition-colors cursor-pointer"
-          >
-            <ChevronLeft size={18} />
-          </button>
         </div>
 
         {/* ─── MAIN NAV — scrollable ─── */}
         <div
-          data-lenis-prevent
           className={`flex-1 min-h-0 overflow-y-auto mt-4 pb-2 px-5 ${collapsed ? "lg:px-2" : ""}`}
           style={{ scrollbarWidth: "thin", scrollbarColor: "#c4b5fd transparent" }}
         >
@@ -209,10 +291,7 @@ export function Sidebar() {
 
         {/* ─── BOTTOM — always pinned ─── */}
         <div className="shrink-0">
-          {/* Dashed separator */}
           <div className="mx-4 border-t border-gray-200" />
-
-          {/* Bottom nav */}
           <nav className={`flex flex-col gap-0.5 mt-3 ${collapsed ? "px-2" : "px-8"}`}>
             {bottomMenus.map((item) => (
               <MenuItem
@@ -224,11 +303,7 @@ export function Sidebar() {
               />
             ))}
           </nav>
-
-          {/* Dashed separator */}
           <div className="mx-4 mt-3 border-t border-gray-200" />
-
-          {/* ─── PROFILE ─── */}
           <div className={`py-4 ${collapsed ? "px-2" : "px-3"}`}>
             <motion.div
               whileHover={{ scale: 1.02 }}

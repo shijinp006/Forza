@@ -69,7 +69,7 @@ export const CalendarWidget = ({
     );
 
     return (
-        <div style={inter} className="w-full sm:w-[300px] lg:w-[320px] h-auto md:h-screen shrink-0 bg-white rounded-2xl border border-gray-100 shadow-xs p-4 sm:p-5 flex flex-col">
+        <div style={inter} className="w-full sm:w-[300px] lg:w-[320px] h-auto shrink-0 bg-white rounded-2xl border border-gray-100 shadow-xs p-4 sm:p-5 flex flex-col">
             
             {/* Mobile Header with Calendar Toggle Button */}
             <div className="md:hidden flex items-center justify-between pb-3 mb-3 border-b border-gray-100">
