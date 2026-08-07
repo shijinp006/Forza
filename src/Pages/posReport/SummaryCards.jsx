@@ -36,14 +36,14 @@ export function SummaryCards({ activeCounter }) {
                                 style={{ ...inter, fontWeight: 700, fontSize: "22px", letterSpacing: "-0.5px" }}
                                 className="text-slate-900 leading-tight"
                             >
-                                ฿ {card.value}
+                                Đ {card.value}
                             </p>
                         ) : (
                             <p
                                 style={{ ...inter, fontWeight: 700, fontSize: "22px" }}
                                 className="text-slate-900 leading-tight"
                             >
-                                ฿ _
+                                Đ _
                             </p>
                         )}
 

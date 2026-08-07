@@ -17,11 +17,48 @@ export const DocExpiry = () => {
     const isDetailOpen = Boolean(selectedEmployee) && activeTab === "Employees";
     const isNoScroll = isDetailOpen;
 
+    const filterByDate = (list, filter) => {
+        if (!filter || filter === "All Time") return list;
+
+        const getDays = (item) => {
+            if (typeof item.days === "number") return item.days;
+            if (item.daysLeft) {
+                const match = item.daysLeft.match(/(\d+)/);
+                if (match) return parseInt(match[1], 10);
+            }
+            if (item.status) {
+                if (item.status.includes("Today")) return 0;
+                const match = item.status.match(/(\d+)/);
+                if (match) return parseInt(match[1], 10);
+            }
+            return 15;
+        };
+
+        if (filter === "Today") return list.filter((item) => getDays(item) <= 2);
+        if (filter === "Yesterday") return list.filter((item) => getDays(item) <= 5);
+        if (filter === "Last 7 Days") return list.filter((item) => getDays(item) <= 7);
+        if (filter === "Last 30 Days" || filter === "This Month") return list.filter((item) => getDays(item) <= 30);
+        return list;
+    };
+
+    const filteredEmployees = filterByDate(employees, dateFilter);
+    const filteredVehicles = filterByDate(vehicles, dateFilter);
+    const filteredCompanyDocs = filterByDate(companyDocs, dateFilter);
+    const filteredActionItems = filterByDate(actionItems, dateFilter);
+
+    const dynamicStats = stats.map((s) => {
+        let val = s.value;
+        if (s.label === "Employees") val = String(filteredEmployees.length).padStart(2, "0");
+        if (s.label === "Vehicles") val = String(filteredVehicles.length).padStart(2, "0");
+        if (s.label === "Company") val = String(filteredCompanyDocs.length).padStart(2, "0");
+        if (s.label === "Other") val = String(filteredActionItems.length).padStart(2, "0");
+        return { ...s, value: val };
+    });
+
     return (
         <div
             style={inter}
-            className={`h-screen flex flex-col bg-[#EDEAFB] ${isNoScroll ? "overflow-hidden" : "overflow-auto"
-                }`}
+            className="min-h-screen flex flex-col bg-[#EDEAFB] pb-8"
         >
             {/* ── TOP BAR HEADER ── */}
             <TopBarHeader dateFilter={dateFilter} setDateFilter={setDateFilter} />
@@ -39,7 +76,7 @@ export const DocExpiry = () => {
                     className="flex gap-3 overflow-x-auto py-2.5 px-1"
                     style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
-                    {stats.map((stat) => (
+                    {dynamicStats.map((stat) => (
                         <StatCard
                             key={stat.label}
                             stat={stat}
@@ -56,22 +93,22 @@ export const DocExpiry = () => {
             {/* ── MODULAR TAB VIEWS ── */}
             {activeTab === "Employees" && (
                 <EmployeesTab
-                    employees={employees}
+                    employees={filteredEmployees}
                     selectedEmployee={selectedEmployee}
                     setSelectedEmployee={setSelectedEmployee}
                 />
             )}
 
             {activeTab === "Vehicles" && (
-                <VehiclesTab vehicles={vehicles} />
+                <VehiclesTab vehicles={filteredVehicles} />
             )}
 
             {activeTab === "Company" && (
-                <CompanyDocsTab companyDocs={companyDocs} />
+                <CompanyDocsTab companyDocs={filteredCompanyDocs} />
             )}
 
             {activeTab === "Other" && (
-                <OtherTab actionItems={actionItems} />
+                <OtherTab actionItems={filteredActionItems} />
             )}
         </div>
     );

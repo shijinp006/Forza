@@ -11,16 +11,6 @@ function App() {
           <Route index element={<POSReport />} />
           <Route path="counter" element={<POSReport />} />
           <Route path="doc-expiry" element={<DocExpiry />} />
-          {/* <Route path="notifications" element={<POSReport />} />
- <Route path="sales" element={<POSReport />} />
-<Route path="purchase" element={<POSReport />} />
-<Route path="inventory" element={<POSReport />} />
-<Route path="tax" element={<POSReport />} />
-<Route path="account" element={<POSReport />} />
-
- 
- <Route path="settings" element={<POSReport />} />
-<Route path="help" element={<POSReport />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

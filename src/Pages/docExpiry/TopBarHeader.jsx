@@ -39,6 +39,7 @@ export const TopBarHeader = ({ dateFilter, setDateFilter }) => {
                 <div className="flex items-center gap-2 relative">
                     <div className="relative">
                         <button
+                            type="button"
                             onClick={() => setIsDateMenuOpen(!isDateMenuOpen)}
                             className="flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-3 py-1.5 rounded-lg border border-white/30 hover:bg-white/30 transition cursor-pointer"
                         >
@@ -48,10 +49,11 @@ export const TopBarHeader = ({ dateFilter, setDateFilter }) => {
                         </button>
 
                         {isDateMenuOpen && (
-                            <div className="absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-50 text-left">
-                                {["Today", "Last 7 Days", "Last 30 Days", "This Month", "All Time"].map((opt) => (
+                            <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-1.5 z-50 text-left">
+                                {["Today", "Yesterday", "Last 7 Days", "Last 30 Days", "This Month", "All Time"].map((opt) => (
                                     <button
                                         key={opt}
+                                        type="button"
                                         onClick={() => {
                                             setDateFilter(opt);
                                             setIsDateMenuOpen(false);

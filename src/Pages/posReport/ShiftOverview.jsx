@@ -15,20 +15,20 @@ export function ShiftOverview({ counter }) {
     const { employee } = currentShiftData;
 
     return (
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-5 sm:p-6 border border-gray-100 shadow-sm flex flex-col gap-4 min-h-[520px] md:h-[520px]">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-4 sm:p-6 border border-gray-100 shadow-sm flex flex-col gap-4 h-auto md:h-[520px]">
 
             {/* ── Top Row: Title + Denomination + Status ── */}
-            <div className="flex items-center justify-between shrink-0 gap-1.5">
-                <h2 style={{ ...inter, fontWeight: 700 }} className="text-slate-900 tracking-tight text-xs sm:text-base whitespace-nowrap">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between shrink-0 gap-2">
+                <h2 style={{ ...inter, fontWeight: 700 }} className="text-slate-900 tracking-tight text-sm sm:text-base md:text-lg">
                     {currentShiftData.shiftLabel}
                 </h2>
-                <div className="flex items-center gap-1.5 shrink-0">
-                    <span style={{ ...inter, fontWeight: 500 }} className="text-slate-400 text-[10px] sm:text-xs whitespace-nowrap">
+                <div className="flex items-center justify-between sm:justify-end gap-2.5 w-full sm:w-auto shrink-0">
+                    <span style={{ ...inter, fontWeight: 500 }} className="text-slate-400 text-xs sm:text-xs">
                         {currentShiftData.denomination}
                     </span>
-                    <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-100/80 whitespace-nowrap">
+                    <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-100/80 shrink-0">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
-                        <span style={{ ...inter, fontWeight: 600 }} className="text-emerald-600 text-[9.5px] sm:text-[10.5px]">
+                        <span style={{ ...inter, fontWeight: 600 }} className="text-emerald-600 text-[10px] sm:text-[10.5px]">
                             {currentShiftData.status}
                         </span>
                     </span>
@@ -101,7 +101,7 @@ export function ShiftOverview({ counter }) {
                                 Cash in Hand
                             </span>
                             <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-slate-700">
-                                ฿ {currentShiftData.cashInHand}
+                                Đ {currentShiftData.cashInHand}
                             </span>
                         </div>
 
@@ -110,7 +110,7 @@ export function ShiftOverview({ counter }) {
                                 Total Collection
                             </span>
                             <span style={{ ...inter, fontWeight: 600, fontSize: "12.5px" }} className="text-slate-700">
-                                ฿ {currentShiftData.totalCollection}
+                                Đ {currentShiftData.totalCollection}
                             </span>
                         </div>
 
@@ -119,7 +119,7 @@ export function ShiftOverview({ counter }) {
                                 Total Sale
                             </span>
                             <span style={{ ...inter, fontWeight: 700, fontSize: "13.5px" }} className="text-slate-900">
-                                ฿ {currentShiftData.totalSale}
+                                Đ {currentShiftData.totalSale}
                             </span>
                         </div>
                     </div>
@@ -155,7 +155,7 @@ export function ShiftOverview({ counter }) {
                                 Total Collected
                             </span>
                             <span style={{ ...inter, fontSize: "12px", fontWeight: 700 }} className="text-slate-800 mt-0.5">
-                                ฿ 5608.00
+                                Đ 5608.00
                             </span>
                         </div>
                     </div>
@@ -174,7 +174,7 @@ export function ShiftOverview({ counter }) {
                                     </span>
                                 </div>
                                 <span style={{ ...inter, fontSize: "11.5px", fontWeight: 600 }} className="text-slate-700">
-                                    ฿ {item.amount}
+                                    Đ {item.amount}
                                 </span>
                             </div>
                         ))}

@@ -1,5 +1,5 @@
 import { MoreHorizontal } from "lucide-react";
-import { barData, collectionDistribution } from "../../data/posData";
+import { barData, collectionDistribution, cashiers } from "../../data/posData";
 
 const poppins = { fontFamily: "Poppins, sans-serif" };
 const inter = { fontFamily: "Inter, sans-serif" };
@@ -13,7 +13,16 @@ const FILL_AREA = COL_H - PAD_TOP; // 171px usable fill area
 const MAX_VAL = 5000;
 const Y_TICKS = [5000, 4000, 3000, 2000, 1000, 0];
 
-export function CounterPerformanceChart() {
+export function CounterPerformanceChart({ activeCounter, onSelectCounter, viewType }) {
+    const displayBarData = barData.map((bar) => {
+        if (viewType === "QTY") {
+            const cashierItem = cashiers.find((c) => c.counter === bar.label);
+            const qtyVal = cashierItem ? parseInt(cashierItem.qty) || 0 : 0;
+            const height = Math.round((qtyVal / 200) * 100);
+            return { ...bar, height };
+        }
+        return bar;
+    });
     return (
         <div className="bg-white rounded-2xl p-5 border border-gray-100/90 shadow-sm flex flex-col justify-between">
             {/* Header */}
@@ -82,7 +91,7 @@ export function CounterPerformanceChart() {
                             style={{ display: "flex", position: "relative", zIndex: 1 }}
                             className="gap-3.5 sm:gap-4 lg:gap-0 lg:justify-between w-max lg:w-full min-w-max lg:min-w-0"
                         >
-                            {barData.map((bar) => {
+                            {displayBarData.map((bar) => {
                                 const fillH = Math.round((bar.height / 100) * FILL_AREA);
 
                                 return (
@@ -92,18 +101,19 @@ export function CounterPerformanceChart() {
                                         style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}
                                         className="group cursor-pointer"
                                     >
-                                        {/* ── Column track (Figma exact specs) ── */}
+                                        {/* ── Column track (matching uploaded image effect) ── */}
                                         <div
                                             style={{
                                                 width: `${COL_W}px`,
                                                 height: `${COL_H}px`,
                                                 paddingTop: `${PAD_TOP}px`,
-                                                paddingLeft: `${PAD_X}px`,
-                                                paddingRight: `${PAD_X}px`,
-                                                paddingBottom: `${PAD_X}px`,
-                                                borderRadius: "12px",
-                                                border: "1px solid #EAE7F6",
-                                                backgroundColor: "#F2F0F9",
+                                                paddingLeft: "4px",
+                                                borderRadius: "16px",
+                                                paddingRight: "2px",
+                                                paddingBottom: "2px",
+                                                border: "1px solid #E2E0EE",
+                                                backgroundColor: "#ECE9F5",
+                                                boxShadow: "inset 0px 2px 4px rgba(0, 0, 0, 0.05)",
                                                 position: "relative",
                                                 overflow: "hidden",
                                                 display: "flex",
@@ -113,37 +123,19 @@ export function CounterPerformanceChart() {
                                             }}
                                         >
                                             {fillH > 0 && (
-                                                <>
-                                                    {/* Strong outer glow — behind fill */}
-                                                    <div
-                                                        style={{
-                                                            position: "absolute",
-                                                            bottom: `${PAD_X}px`,
-                                                            left: "50%",
-                                                            transform: "translateX(-50%)",
-                                                            width: "36px",
-                                                            height: `${fillH + 16}px`,
-                                                            borderRadius: "8px",
-                                                            filter: "blur(16px)",
-                                                            background: "rgba(105, 82, 218, 0.55)",
-                                                            zIndex: 1,
-                                                            pointerEvents: "none",
-                                                        }}
-                                                    />
-                                                    {/* Purple gradient fill */}
-                                                    <div
-                                                        style={{
-                                                            width: "100%",
-                                                            height: `${fillH}px`,
-                                                            borderRadius: "8px",
-                                                            background: "linear-gradient(180deg, #6B51E6 0%, #583ED8 100%)",
-                                                            boxShadow: "0px 4px 12px rgba(96, 68, 220, 0.4)",
-                                                            transition: "height 0.5s ease",
-                                                            position: "relative",
-                                                            zIndex: 2,
-                                                        }}
-                                                    />
-                                                </>
+                                                <div
+                                                    style={{
+                                                        width: "100%",
+                                                        height: `${fillH}px`,
+                                                        borderRadius: "8px",
+                                                        background: "linear-gradient(180deg, #6F57DE 0%, #573DD4 100%)",
+                                                        boxShadow: "inset 4px 3px 4px rgba(255, 255, 255, 0.95), 0px 2px 10px rgba(111, 87, 222, 0.4)",
+                                                        border: "1.5px solid rgba(255, 255, 255, 0.85)",
+                                                        transition: "height 0.5s ease",
+                                                        position: "relative",
+                                                        zIndex: 2,
+                                                    }}
+                                                />
                                             )}
                                         </div>
 
@@ -201,7 +193,7 @@ export function CounterPerformanceChart() {
                                 Total Collected
                             </span>
                             <span style={{ ...poppins, fontWeight: 700, fontSize: "13.5px" }} className="text-slate-900 leading-tight mt-1">
-                                <span className="font-sans font-semibold text-slate-800">฿ </span>51212608.00
+                                <span className="font-sans font-semibold text-slate-800">Đ </span>51212608.00
                             </span>
                         </div>
                     </div>

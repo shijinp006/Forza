@@ -51,6 +51,7 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
 
             {/* Scrollable list */}
             <div
+                data-lenis-prevent
                 style={{
                     flex: 1,
                     overflowY: "auto",
@@ -140,7 +141,7 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
                                             color: t.isOnline ? "#6655D8" : "#CBD5E1",
                                         }}
                                     >
-                                        ฿ {t.amount}
+                                        Đ {t.amount}
                                     </span>
                                 </div>
                             </div>
@@ -191,7 +192,7 @@ export function LiveTerminalsList({ activeCounter = "All Counters" }) {
                                             {inv.method}
                                         </span>
                                         <span style={{ ...inter, fontWeight: 800, fontSize: "14px" }} className="text-[#2563EB]">
-                                            ฿ {inv.amount}
+                                            Đ {inv.amount}
                                         </span>
                                     </div>
                                 </div>

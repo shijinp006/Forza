@@ -14,19 +14,19 @@ import HelpIcon from "../assets/Help.svg?react";
 
 /* ── Main Navigation Menus Data ── */
 export const mainMenus = [
-  { title: "Dashboard", Icon: DashboardIcon, path: "/" },
-  { title: "Sales Analysis", Icon: SalesIcon, path: "/sales" },
-  { title: "Purchase Analysis", Icon: PurchaseIcon, path: "/purchase" },
-  { title: "Inventory", Icon: InventoryIcon, path: "/inventory" },
+  { title: "Dashboard", Icon: DashboardIcon, path: "#" },
+  { title: "Sales Analysis", Icon: SalesIcon, path: "#" },
+  { title: "Purchase Analysis", Icon: PurchaseIcon, path: "#" },
+  { title: "Inventory", Icon: InventoryIcon, path: "#" },
   { title: "Counter Report", Icon: CounterIcon, path: "/counter" },
-  { title: "Tax Report", Icon: TaxIcon, path: "/tax" },
-  { title: "Account report", Icon: AccountIcon, path: "/account" },
+  { title: "Tax Report", Icon: TaxIcon, path: "#" },
+  { title: "Account report", Icon: AccountIcon, path: "#" },
   { title: "Doc Expiry", Icon: DocIcon, path: "/doc-expiry" },
 ];
 
 /* ── Bottom Navigation Menus Data ── */
 export const bottomMenus = [
-  { title: "Notifications", Icon: Bell, path: "/notifications" },
-  { title: "Settings", Icon: SettingIcon, path: "/settings" },
-  { title: "Help", Icon: HelpIcon, path: "/help" },
+  { title: "Notifications", Icon: Bell, path: "#" },
+  { title: "Settings", Icon: SettingIcon, path: "#" },
+  { title: "Help", Icon: HelpIcon, path: "#" },
 ];

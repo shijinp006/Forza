@@ -46,7 +46,7 @@ export function CashiersPerformanceTable({ viewType, setViewType }) {
                 </div>
 
                 {/* Table */}
-                <div className="overflow-auto max-h-[300px]" style={{ scrollbarWidth: "thin" }}>
+                <div data-lenis-prevent className="overflow-auto max-h-[300px]" style={{ scrollbarWidth: "thin" }}>
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="border-b border-gray-200/60 text-[10.5px] text-slate-400 font-semibold tracking-wider">
@@ -74,7 +74,7 @@ export function CashiersPerformanceTable({ viewType, setViewType }) {
                                         {item.invoices}
                                     </td>
                                     <td style={{ ...poppins, fontWeight: 700, fontSize: "12.5px" }} className="py-3 px-3 text-slate-900">
-                                        <span className="font-sans font-bold">AED </span>{item.sales.replace("AED ", "")}
+                                        {item.sales}
                                     </td>
                                     <td style={{ ...inter, fontWeight: 500, fontSize: "12px" }} className="py-3 px-3 text-right text-slate-700">
                                         {item.qty}

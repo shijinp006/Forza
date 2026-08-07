@@ -323,6 +323,7 @@ export const vehicles = [
         insuranceExp: "12 Oct 2026",
         regExp: "15 Nov 2026",
         status: "Expiring Soon",
+        days: 2,
     },
     {
         number: "DXB 88291",
@@ -334,6 +335,7 @@ export const vehicles = [
         insuranceExp: "20 Nov 2026",
         regExp: "18 Dec 2026",
         status: "Valid",
+        days: 15,
     },
     {
         number: "DXB 55432",
@@ -345,6 +347,7 @@ export const vehicles = [
         insuranceExp: "05 Oct 2026",
         regExp: "10 Oct 2026",
         status: "Expiring Soon",
+        days: 5,
     },
     {
         number: "DXB 99012",
@@ -356,6 +359,7 @@ export const vehicles = [
         insuranceExp: "12 Dec 2026",
         regExp: "15 Jan 2027",
         status: "Valid",
+        days: 28,
     },
     {
         number: "DXB 33411",
@@ -367,6 +371,7 @@ export const vehicles = [
         insuranceExp: "01 Nov 2026",
         regExp: "05 Dec 2026",
         status: "Valid",
+        days: 6,
     },
     {
         number: "DXB 77654",
@@ -378,6 +383,7 @@ export const vehicles = [
         insuranceExp: "15 Oct 2026",
         regExp: "20 Oct 2026",
         status: "Expiring Soon",
+        days: 4,
     },
     {
         number: "DXB 44109",
@@ -389,6 +395,7 @@ export const vehicles = [
         insuranceExp: "10 Jan 2027",
         regExp: "14 Feb 2027",
         status: "Valid",
+        days: 35,
     },
     {
         number: "DXB 66201",
@@ -400,6 +407,7 @@ export const vehicles = [
         insuranceExp: "08 Nov 2026",
         regExp: "12 Dec 2026",
         status: "Valid",
+        days: 12,
     },
 ];
 
@@ -415,6 +423,7 @@ export const companyDocs = [
         daysLeft: "12 Days Left",
         iconType: "grid",
         iconBg: "bg-[#E5E9F8] text-[#5949BE]",
+        days: 12,
     },
     {
         name: "Office Lease Agreement",
@@ -423,9 +432,10 @@ export const companyDocs = [
         authority: "ABU Dhabi",
         issueDate: "15 Jan 2026",
         expiryDate: "14 Jan 2026",
-        daysLeft: "13 Days Left",
+        daysLeft: "5 Days Left",
         iconType: "building",
         iconBg: "bg-[#E5E9F8] text-[#5949BE]",
+        days: 5,
     },
     {
         name: "Commercial Fleet Insurance",
@@ -434,9 +444,10 @@ export const companyDocs = [
         authority: "DED Dubai",
         issueDate: "12 Jan 2026",
         expiryDate: "11 Jan 2026",
-        daysLeft: "12 Days Left",
+        daysLeft: "2 Days Left",
         iconType: "card",
         iconBg: "bg-[#E5E9F8] text-[#5949BE]",
+        days: 2,
     },
     {
         name: "Chamber of Commerce Cert",
@@ -445,9 +456,10 @@ export const companyDocs = [
         authority: "Sharjah",
         issueDate: "18 Jan 2026",
         expiryDate: "17 Jan 2026",
-        daysLeft: "16 Days Left",
+        daysLeft: "7 Days Left",
         iconType: "shield",
         iconBg: "bg-[#E5E9F8] text-[#5949BE]",
+        days: 7,
     },
     {
         name: "Industrial Operation Permit",
@@ -459,6 +471,7 @@ export const companyDocs = [
         daysLeft: "25 Days Left",
         iconType: "grid",
         iconBg: "bg-[#E5E9F8] text-[#5949BE]",
+        days: 25,
     },
     {
         name: "Environmental Compliance Cert",
@@ -470,6 +483,7 @@ export const companyDocs = [
         daysLeft: "30 Days Left",
         iconType: "shield",
         iconBg: "bg-[#E5E9F8] text-[#5949BE]",
+        days: 30,
     },
     {
         name: "Civil Defence Safety Permit",
@@ -481,6 +495,7 @@ export const companyDocs = [
         daysLeft: "45 Days Left",
         iconType: "building",
         iconBg: "bg-[#E5E9F8] text-[#5949BE]",
+        days: 45,
     },
 ];
 
@@ -495,6 +510,7 @@ export const actionItems = [
         status: "• 3 Days",
         statusColor: "text-rose-500",
         initials: "JD",
+        days: 3,
     },
     {
         name: "Michael Chen",
@@ -505,6 +521,7 @@ export const actionItems = [
         status: "6 Days",
         statusColor: "text-gray-500",
         initials: "MC",
+        days: 6,
     },
     {
         name: "Sarah Jenkins",
@@ -515,6 +532,7 @@ export const actionItems = [
         status: "10 Days",
         statusColor: "text-gray-500",
         initials: "SJ",
+        days: 10,
     },
     {
         name: "Elena Rodriguez",
@@ -525,16 +543,17 @@ export const actionItems = [
         status: "🎂 Today",
         statusColor: "text-violet-600 font-semibold",
         initials: "ER",
+        days: 0,
     },
 ];
 
 /* ── Dashboard Overview Data ── */
 export const dashboardData = {
     overviewStats: [
-        { title: "Total Revenue", value: "AED 284,500", change: "+14.2%", isPositive: true, subtext: "vs last month", bg: "bg-violet-50", accent: "text-violet-600" },
-        { title: "Total Sales", value: "AED 192,350", change: "+8.5%", isPositive: true, subtext: "1,420 orders", bg: "bg-indigo-50", accent: "text-indigo-600" },
-        { title: "Total Purchases", value: "AED 98,120", change: "-3.1%", isPositive: false, subtext: "48 vendor invoices", bg: "bg-purple-50", accent: "text-purple-600" },
-        { title: "Net Profit", value: "AED 94,230", change: "+18.7%", isPositive: true, subtext: "33.1% profit margin", bg: "bg-emerald-50", accent: "text-emerald-600" }
+        { title: "Total Revenue", value: "Đ 284,500", change: "+14.2%", isPositive: true, subtext: "vs last month", bg: "bg-violet-50", accent: "text-violet-600" },
+        { title: "Total Sales", value: "Đ 192,350", change: "+8.5%", isPositive: true, subtext: "1,420 orders", bg: "bg-indigo-50", accent: "text-indigo-600" },
+        { title: "Total Purchases", value: "Đ 98,120", change: "-3.1%", isPositive: false, subtext: "48 vendor invoices", bg: "bg-purple-50", accent: "text-purple-600" },
+        { title: "Net Profit", value: "Đ 94,230", change: "+18.7%", isPositive: true, subtext: "33.1% profit margin", bg: "bg-emerald-50", accent: "text-emerald-600" }
     ],
     monthlyRevenueVsExpense: [
         { label: "Jan", revenue: 42000, expense: 28000, profit: 14000 },
@@ -553,21 +572,21 @@ export const dashboardData = {
         { label: "Counter 5", value: 8, color: "#DDD6FE" },
     ],
     recentTransactions: [
-        { id: "INV-9021", customer: "Al Maktoum Ltd", amount: "AED 12,450", date: "Just now", status: "Completed", type: "Sales" },
-        { id: "INV-9020", customer: "Emirates Trading", amount: "AED 8,900", date: "15 min ago", status: "Completed", type: "Sales" },
-        { id: "PO-4412", supplier: "Global Supplies FZE", amount: "AED 15,200", date: "1 hour ago", status: "Pending", type: "Purchase" },
-        { id: "INV-9019", customer: "Gulf Retail LLC", amount: "AED 4,350", date: "2 hours ago", status: "Completed", type: "Sales" },
-        { id: "TAX-2025-01", supplier: "FTA Dubai", amount: "AED 6,120", date: "Yesterday", status: "Filed", type: "Tax" },
+        { id: "INV-9021", customer: "Al Maktoum Ltd", amount: "Đ 12,450", date: "Just now", status: "Completed", type: "Sales" },
+        { id: "INV-9020", customer: "Emirates Trading", amount: "Đ 8,900", date: "15 min ago", status: "Completed", type: "Sales" },
+        { id: "PO-4412", supplier: "Global Supplies FZE", amount: "Đ 15,200", date: "1 hour ago", status: "Pending", type: "Purchase" },
+        { id: "INV-9019", customer: "Gulf Retail LLC", amount: "Đ 4,350", date: "2 hours ago", status: "Completed", type: "Sales" },
+        { id: "TAX-2025-01", supplier: "FTA Dubai", amount: "Đ 6,120", date: "Yesterday", status: "Filed", type: "Tax" },
     ]
 };
 
 /* ── Sales Analysis Data ── */
 export const salesData = {
     summary: [
-        { label: "Gross Sales", value: "AED 428,900", change: "+12.4%", period: "This Month" },
-        { label: "Avg Transaction", value: "AED 340.50", change: "+4.1%", period: "Per Invoice" },
+        { label: "Gross Sales", value: "Đ 428,900", change: "+12.4%", period: "This Month" },
+        { label: "Avg Transaction", value: "Đ 340.50", change: "+4.1%", period: "Per Invoice" },
         { label: "Total Orders", value: "1,260", change: "+9.2%", period: "Completed" },
-        { label: "Returns & Refund", value: "AED 3,450", change: "-1.8%", period: "0.8% of sales" }
+        { label: "Returns & Refund", value: "Đ 3,450", change: "-1.8%", period: "0.8% of sales" }
     ],
     monthlyTrend: [
         { label: "Week 1", retail: 28000, wholesale: 19000, online: 12000 },
@@ -576,26 +595,26 @@ export const salesData = {
         { label: "Week 4", retail: 42000, wholesale: 29000, online: 18000 },
     ],
     categoryBreakdown: [
-        { label: "Electronics & POS", value: 40, amount: "AED 171,560", color: "#6F57DE" },
-        { label: "Office Equipment", value: 25, amount: "AED 107,225", color: "#3B82F6" },
-        { label: "Consumables", value: 20, amount: "AED 85,780", color: "#10B981" },
-        { label: "Services & Support", value: 15, amount: "AED 64,335", color: "#F59E0B" }
+        { label: "Electronics & POS", value: 40, amount: "Đ 171,560", color: "#6F57DE" },
+        { label: "Office Equipment", value: 25, amount: "Đ 107,225", color: "#3B82F6" },
+        { label: "Consumables", value: 20, amount: "Đ 85,780", color: "#10B981" },
+        { label: "Services & Support", value: 15, amount: "Đ 64,335", color: "#F59E0B" }
     ],
     topProducts: [
-        { rank: "#1", name: "Touch POS Terminal Pro 15\"", category: "Hardware", code: "POS-1001", qty: 240, revenue: "AED 96,000", growth: "+22%" },
-        { rank: "#2", name: "Thermal Receipt Printer 80mm", category: "Hardware", code: "PRN-204", qty: 380, revenue: "AED 76,000", growth: "+15%" },
-        { rank: "#3", name: "Barcode Scanner 2D Wireless", category: "Accessories", code: "SCN-305", qty: 410, revenue: "AED 61,500", growth: "+18%" },
-        { rank: "#4", name: "Automatic Cash Drawer HD", category: "Hardware", code: "CDR-102", qty: 190, revenue: "AED 47,500", growth: "+8%" },
-        { rank: "#5", name: "Paper Roll 80x80 (Box of 50)", category: "Consumables", code: "CON-009", qty: 650, revenue: "AED 32,500", growth: "+30%" }
+        { rank: "#1", name: "Touch POS Terminal Pro 15\"", category: "Hardware", code: "POS-1001", qty: 240, revenue: "Đ 96,000", growth: "+22%" },
+        { rank: "#2", name: "Thermal Receipt Printer 80mm", category: "Hardware", code: "PRN-204", qty: 380, revenue: "Đ 76,000", growth: "+15%" },
+        { rank: "#3", name: "Barcode Scanner 2D Wireless", category: "Accessories", code: "SCN-305", qty: 410, revenue: "Đ 61,500", growth: "+18%" },
+        { rank: "#4", name: "Automatic Cash Drawer HD", category: "Hardware", code: "CDR-102", qty: 190, revenue: "Đ 47,500", growth: "+8%" },
+        { rank: "#5", name: "Paper Roll 80x80 (Box of 50)", category: "Consumables", code: "CON-009", qty: 650, revenue: "Đ 32,500", growth: "+30%" }
     ]
 };
 
 /* ── Purchase Analysis Data ── */
 export const purchaseData = {
     summary: [
-        { label: "Total Purchases", value: "AED 215,800", change: "-4.2%", period: "This Month" },
+        { label: "Total Purchases", value: "Đ 215,800", change: "-4.2%", period: "This Month" },
         { label: "Active Suppliers", value: "34 Vendors", change: "+2 new", period: "Approved list" },
-        { label: "Open PO Count", value: "12 Orders", change: "AED 45,200", period: "In transit" },
+        { label: "Open PO Count", value: "12 Orders", change: "Đ 45,200", period: "In transit" },
         { label: "Avg Payment Term", value: "30 Days", change: "98% on time", period: "Credit period" }
     ],
     monthlyPurchaseTrend: [
@@ -607,16 +626,16 @@ export const purchaseData = {
         { label: "Jun", hardware: 66000, accessories: 23000, consumables: 13000 },
     ],
     vendorDistribution: [
-        { label: "TechData Middle East", value: 38, amount: "AED 82,000", color: "#6F57DE" },
-        { label: "Epson Gulf FZE", value: 27, amount: "AED 58,260", color: "#3B82F6" },
-        { label: "Honeywell Logistics", value: 20, amount: "AED 43,160", color: "#10B981" },
-        { label: "Others", value: 15, amount: "AED 32,380", color: "#F59E0B" }
+        { label: "TechData Middle East", value: 38, amount: "Đ 82,000", color: "#6F57DE" },
+        { label: "Epson Gulf FZE", value: 27, amount: "Đ 58,260", color: "#3B82F6" },
+        { label: "Honeywell Logistics", value: 20, amount: "Đ 43,160", color: "#10B981" },
+        { label: "Others", value: 15, amount: "Đ 32,380", color: "#F59E0B" }
     ],
     purchaseOrders: [
-        { id: "PO-8812", vendor: "TechData Middle East", date: "14 Jan 2026", items: "120 Units POS Terminal", amount: "AED 48,000", status: "Delivered", statusBg: "bg-emerald-100 text-emerald-700" },
-        { id: "PO-8813", vendor: "Epson Gulf FZE", date: "15 Jan 2026", items: "200 Printers & Ribbons", amount: "AED 32,500", status: "In Transit", statusBg: "bg-blue-100 text-blue-700" },
-        { id: "PO-8814", vendor: "Honeywell Logistics", date: "16 Jan 2026", items: "150 Wireless Scanners", amount: "AED 22,500", status: "Pending Approval", statusBg: "bg-amber-100 text-amber-700" },
-        { id: "PO-8815", vendor: "Gulf Office Supplies", date: "18 Jan 2026", items: "500 Boxes Thermal Roll", amount: "AED 12,000", status: "Processing", statusBg: "bg-purple-100 text-purple-700" }
+        { id: "PO-8812", vendor: "TechData Middle East", date: "14 Jan 2026", items: "120 Units POS Terminal", amount: "Đ 48,000", status: "Delivered", statusBg: "bg-emerald-100 text-emerald-700" },
+        { id: "PO-8813", vendor: "Epson Gulf FZE", date: "15 Jan 2026", items: "200 Printers & Ribbons", amount: "Đ 32,500", status: "In Transit", statusBg: "bg-blue-100 text-blue-700" },
+        { id: "PO-8814", vendor: "Honeywell Logistics", date: "16 Jan 2026", items: "150 Wireless Scanners", amount: "Đ 22,500", status: "Pending Approval", statusBg: "bg-amber-100 text-amber-700" },
+        { id: "PO-8815", vendor: "Gulf Office Supplies", date: "18 Jan 2026", items: "500 Boxes Thermal Roll", amount: "Đ 12,000", status: "Processing", statusBg: "bg-purple-100 text-purple-700" }
     ]
 };
 
@@ -624,31 +643,31 @@ export const purchaseData = {
 export const inventoryData = {
     summary: [
         { label: "Total SKUs", value: "1,450", sub: "Active items", color: "border-l-4 border-violet-500" },
-        { label: "Stock Valuation", value: "AED 842,000", sub: "At cost price", color: "border-l-4 border-blue-500" },
+        { label: "Stock Valuation", value: "Đ 842,000", sub: "At cost price", color: "border-l-4 border-blue-500" },
         { label: "Low Stock Items", value: "14 Items", sub: "Reorder required", color: "border-l-4 border-amber-500" },
         { label: "Out of Stock", value: "3 Items", sub: "Urgent PO needed", color: "border-l-4 border-rose-500" }
     ],
     categoryValuation: [
-        { label: "POS Hardware", stock: 680, value: "AED 420,000", color: "#6F57DE" },
-        { label: "Printers & Scanners", stock: 450, value: "AED 210,000", color: "#3B82F6" },
-        { label: "Cash Drawers & Cables", stock: 320, value: "AED 95,000", color: "#10B981" },
-        { label: "Thermal Rolls & Supplies", stock: 1200, value: "AED 117,000", color: "#F59E0B" }
+        { label: "POS Hardware", stock: 680, value: "Đ 420,000", color: "#6F57DE" },
+        { label: "Printers & Scanners", stock: 450, value: "Đ 210,000", color: "#3B82F6" },
+        { label: "Cash Drawers & Cables", stock: 320, value: "Đ 95,000", color: "#10B981" },
+        { label: "Thermal Rolls & Supplies", stock: 1200, value: "Đ 117,000", color: "#F59E0B" }
     ],
     itemsList: [
-        { sku: "SKU-1001", name: "Touch POS Terminal Pro 15\"", category: "Hardware", stock: 42, minReorder: 15, unitPrice: "AED 1,800", status: "In Stock", statusBg: "bg-emerald-100 text-emerald-700" },
-        { sku: "SKU-2004", name: "Thermal Receipt Printer 80mm", category: "Hardware", stock: 8, minReorder: 20, unitPrice: "AED 450", status: "Low Stock", statusBg: "bg-amber-100 text-amber-700" },
-        { sku: "SKU-3005", name: "Wireless Barcode Scanner", category: "Accessories", stock: 28, minReorder: 10, unitPrice: "AED 320", status: "In Stock", statusBg: "bg-emerald-100 text-emerald-700" },
-        { sku: "SKU-4001", name: "Customer Pole Display VFD", category: "Accessories", stock: 0, minReorder: 5, unitPrice: "AED 280", status: "Out of Stock", statusBg: "bg-rose-100 text-rose-700" },
-        { sku: "SKU-5009", name: "Paper Roll 80x80 Box", category: "Consumables", stock: 140, minReorder: 50, unitPrice: "AED 95", status: "In Stock", statusBg: "bg-emerald-100 text-emerald-700" }
+        { sku: "SKU-1001", name: "Touch POS Terminal Pro 15\"", category: "Hardware", stock: 42, minReorder: 15, unitPrice: "Đ 1,800", status: "In Stock", statusBg: "bg-emerald-100 text-emerald-700" },
+        { sku: "SKU-2004", name: "Thermal Receipt Printer 80mm", category: "Hardware", stock: 8, minReorder: 20, unitPrice: "Đ 450", status: "Low Stock", statusBg: "bg-amber-100 text-amber-700" },
+        { sku: "SKU-3005", name: "Wireless Barcode Scanner", category: "Accessories", stock: 28, minReorder: 10, unitPrice: "Đ 320", status: "In Stock", statusBg: "bg-emerald-100 text-emerald-700" },
+        { sku: "SKU-4001", name: "Customer Pole Display VFD", category: "Accessories", stock: 0, minReorder: 5, unitPrice: "Đ 280", status: "Out of Stock", statusBg: "bg-rose-100 text-rose-700" },
+        { sku: "SKU-5009", name: "Paper Roll 80x80 Box", category: "Consumables", stock: 140, minReorder: 50, unitPrice: "Đ 95", status: "In Stock", statusBg: "bg-emerald-100 text-emerald-700" }
     ]
 };
 
 /* ── Tax Report Data ── */
 export const taxData = {
     summary: [
-        { label: "Output VAT (Sales)", value: "AED 21,445.00", sub: "5% VAT collected" },
-        { label: "Input VAT (Purchases)", value: "AED 10,790.00", sub: "5% VAT paid" },
-        { label: "Net VAT Payable", value: "AED 10,655.00", sub: "Due by 28th Feb" },
+        { label: "Output VAT (Sales)", value: "Đ 21,445.00", sub: "5% VAT collected" },
+        { label: "Input VAT (Purchases)", value: "Đ 10,790.00", sub: "5% VAT paid" },
+        { label: "Net VAT Payable", value: "Đ 10,655.00", sub: "Due by 28th Feb" },
         { label: "Compliance Status", value: "100% On-Time", sub: "FTA Registered" }
     ],
     monthlyVatTrend: [
@@ -658,20 +677,20 @@ export const taxData = {
         { label: "Q4 2025", salesVat: 24500, purchaseVat: 12100, netPayable: 12400 },
     ],
     filingsLog: [
-        { period: "Q4 2025 (Oct - Dec)", trn: "100293848100003", vatAmount: "AED 12,400.00", filingDate: "28 Jan 2026", status: "Filed & Paid", statusBg: "bg-emerald-100 text-emerald-700" },
-        { period: "Q3 2025 (Jul - Sep)", trn: "100293848100003", vatAmount: "AED 10,700.00", filingDate: "27 Oct 2025", status: "Filed & Paid", statusBg: "bg-emerald-100 text-emerald-700" },
-        { period: "Q2 2025 (Apr - Jun)", trn: "100293848100003", vatAmount: "AED 10,100.00", filingDate: "28 Jul 2025", status: "Filed & Paid", statusBg: "bg-emerald-100 text-emerald-700" },
-        { period: "Q1 2025 (Jan - Mar)", trn: "100293848100003", vatAmount: "AED 9,300.00", filingDate: "26 Apr 2025", status: "Filed & Paid", statusBg: "bg-emerald-100 text-emerald-700" },
+        { period: "Q4 2025 (Oct - Dec)", trn: "100293848100003", vatAmount: "Đ 12,400.00", filingDate: "28 Jan 2026", status: "Filed & Paid", statusBg: "bg-emerald-100 text-emerald-700" },
+        { period: "Q3 2025 (Jul - Sep)", trn: "100293848100003", vatAmount: "Đ 10,700.00", filingDate: "27 Oct 2025", status: "Filed & Paid", statusBg: "bg-emerald-100 text-emerald-700" },
+        { period: "Q2 2025 (Apr - Jun)", trn: "100293848100003", vatAmount: "Đ 10,100.00", filingDate: "28 Jul 2025", status: "Filed & Paid", statusBg: "bg-emerald-100 text-emerald-700" },
+        { period: "Q1 2025 (Jan - Mar)", trn: "100293848100003", vatAmount: "Đ 9,300.00", filingDate: "26 Apr 2025", status: "Filed & Paid", statusBg: "bg-emerald-100 text-emerald-700" },
     ]
 };
 
 /* ── Account Report Data ── */
 export const accountData = {
     summary: [
-        { label: "Total Assets", value: "AED 1,845,000", sub: "Cash & Inventory" },
-        { label: "Total Liabilities", value: "AED 320,000", sub: "Accounts Payable" },
-        { label: "Net Equity", value: "AED 1,525,000", sub: "Retained Earnings" },
-        { label: "Cash on Hand", value: "AED 412,500", sub: "Dubai Islamic Bank" }
+        { label: "Total Assets", value: "Đ 1,845,000", sub: "Cash & Inventory" },
+        { label: "Total Liabilities", value: "Đ 320,000", sub: "Accounts Payable" },
+        { label: "Net Equity", value: "Đ 1,525,000", sub: "Retained Earnings" },
+        { label: "Cash on Hand", value: "Đ 412,500", sub: "Dubai Islamic Bank" }
     ],
     monthlyProfitLoss: [
         { label: "Aug", grossRevenue: 85000, operatingExpenses: 42000, netIncome: 43000 },
@@ -682,10 +701,10 @@ export const accountData = {
         { label: "Jan", grossRevenue: 114000, operatingExpenses: 51000, netIncome: 63000 },
     ],
     ledgerEntries: [
-        { ref: "JRN-401", date: "15 Jan 2026", account: "Sales Revenue", debit: "-", credit: "AED 18,240", description: "Daily POS Counter 1 Sales" },
-        { ref: "JRN-402", date: "15 Jan 2026", account: "Accounts Payable", debit: "AED 15,200", credit: "-", description: "Vendor Payment - TechData" },
-        { ref: "JRN-403", date: "14 Jan 2026", account: "Office Rent Expense", debit: "AED 12,000", credit: "-", description: "Monthly HQ Rent Payment" },
-        { ref: "JRN-404", date: "12 Jan 2026", account: "Salaries Expense", debit: "AED 65,000", credit: "-", description: "January Staff Payroll" },
+        { ref: "JRN-401", date: "15 Jan 2026", account: "Sales Revenue", debit: "-", credit: "Đ 18,240", description: "Daily POS Counter 1 Sales" },
+        { ref: "JRN-402", date: "15 Jan 2026", account: "Accounts Payable", debit: "Đ 15,200", credit: "-", description: "Vendor Payment - TechData" },
+        { ref: "JRN-403", date: "14 Jan 2026", account: "Office Rent Expense", debit: "Đ 12,000", credit: "-", description: "Monthly HQ Rent Payment" },
+        { ref: "JRN-404", date: "12 Jan 2026", account: "Salaries Expense", debit: "Đ 65,000", credit: "-", description: "January Staff Payroll" },
     ]
 };
 
@@ -694,7 +713,7 @@ export const notificationsData = [
     { id: 1, title: "Visa Expiry Alert", message: "Sundar Pichai's visa expires in 5 days (12 Oct 2026).", time: "10 mins ago", category: "Expiry", isUnread: true, bg: "bg-rose-50 border-rose-200" },
     { id: 2, title: "Trade License Expiry", message: "Dubai HQ Main Trade License expires in 12 days.", time: "1 hour ago", category: "Doc Expiry", isUnread: true, bg: "bg-amber-50 border-amber-200" },
     { id: 3, title: "Low Stock Warning", message: "Thermal Receipt Printer stock reached minimum threshold (8 left).", time: "3 hours ago", category: "Inventory", isUnread: false, bg: "bg-blue-50 border-blue-200" },
-    { id: 4, title: "POS Counter 1 Peak Sales", message: "Counter 1 crossed AED 18,000 in sales today.", time: "Yesterday", category: "Sales", isUnread: false, bg: "bg-violet-50 border-violet-200" },
+    { id: 4, title: "POS Counter 1 Peak Sales", message: "Counter 1 crossed Đ 18,000 in sales today.", time: "Yesterday", category: "Sales", isUnread: false, bg: "bg-violet-50 border-violet-200" },
     { id: 5, title: "VAT Return Remind", message: "Q4 2025 VAT filing successfully confirmed by FTA.", time: "2 days ago", category: "Tax", isUnread: false, bg: "bg-emerald-50 border-emerald-200" }
 ];
 
@@ -710,7 +729,7 @@ export const settingsData = {
     company: {
         name: "FORZA Retail & POS Solutions LLC",
         trn: "100293848100003",
-        currency: "AED",
+        currency: "Đ",
         address: "Marina Tower, Floor 42, Dubai, UAE"
     }
 };
